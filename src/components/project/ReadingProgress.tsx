@@ -6,16 +6,22 @@ export function ReadingProgress() {
   const bar = useRef<HTMLDivElement>(null);
   const num = useRef<HTMLSpanElement>(null);
   useEffect(() => {
+    let frame = 0;
     const on = () => {
+      if (!frame) frame = requestAnimationFrame(paint);
+    };
+    const paint = () => {
+      frame = 0;
       const h = document.documentElement.scrollHeight - window.innerHeight;
       const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
       if (bar.current) bar.current.style.transform = `scaleX(${p})`;
       if (num.current) num.current.textContent = String(Math.round(p * 100)).padStart(2, "0");
     };
-    on();
+    paint();
     window.addEventListener("scroll", on, { passive: true });
     window.addEventListener("resize", on);
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("scroll", on);
       window.removeEventListener("resize", on);
     };

@@ -3,18 +3,24 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { Picture } from "@/components/ui/Picture";
 import { RevealLines } from "@/components/motion/Reveal";
-import { ScrollTrigger, useFinePointer, useReducedMotion } from "@/lib/motion";
+import { ScrollTrigger, useFinePointer, useReducedMotion, whenQuiet } from "@/lib/motion";
+import { onIntroDone } from "@/lib/intro";
 
 const HouseScene = dynamic(() => import("./HouseScene"), { ssr: false });
 
 function hasWebGL() {
   try {
     const c = document.createElement("canvas");
-    return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl")));
+    const gl = c.getContext("webgl2") || c.getContext("webgl");
+    // libera o contexto de teste na hora (cada contexto WebGL custa memória de GPU)
+    (gl as WebGLRenderingContext | null)?.getExtension("WEBGL_lose_context")?.loseContext();
+    return !!gl;
   } catch {
     return false;
   }
 }
+
+
 
 const fmtHour = (h: number) => `${String(Math.floor(h)).padStart(2, "0")}h${String(Math.round((h % 1) * 60)).padStart(2, "0")}`;
 
@@ -35,15 +41,35 @@ export function Experience3D() {
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    setWebgl(hasWebGL());
     const el = section.current!;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        setVisible(e.isIntersecting);
-        if (e.isIntersecting) setNear(true);
-      },
-      { rootMargin: "400px 0px" },
+    // o teste de WebGL e o download da maquete ficam para depois da abertura, num momento ocioso,
+    // para não disputar a CPU com a animação de entrada nem travar a rolagem quando a seção chega
+    let wait = 0;
+    let offQuiet = () => {};
+    const offIntro = onIntroDone(() => {
+      // depois que a entrada do hero termina e quando a pessoa não está rolando
+      wait = window.setTimeout(
+        () =>
+          (offQuiet = whenQuiet(() => {
+            setWebgl((w) => (w === null ? hasWebGL() : w));
+            void import("./HouseScene");
+          })),
+        3200,
+      );
+    });
+    // a cena é montada bem antes de aparecer (e num momento ocioso), para a compilação não cair no meio da rolagem
+    const ioNear = new IntersectionObserver(
+      ([e]) =>
+        e.isIntersecting &&
+        // monta a cena quando a rolagem para; até lá fica a imagem estática
+        (offQuiet = whenQuiet(() => {
+          setWebgl((w) => (w === null ? hasWebGL() : w));
+          setNear(true);
+        }, 500)),
+      { rootMargin: "1400px 0px" },
     );
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { rootMargin: "120px 0px" });
+    ioNear.observe(el);
     io.observe(el);
     const st = ScrollTrigger.create({
       trigger: el,
@@ -52,6 +78,10 @@ export function Experience3D() {
       onUpdate: (s) => (scrollTurn.current = reduced ? 0.5 : s.progress),
     });
     return () => {
+      offIntro();
+      clearTimeout(wait);
+      offQuiet();
+      ioNear.disconnect();
       io.disconnect();
       st.kill();
     };
@@ -86,7 +116,7 @@ export function Experience3D() {
           </div>
           {webgl && near && (
             <div className="absolute inset-0 transition-opacity duration-1000" style={{ opacity: ready ? 1 : 0 }}>
-              <HouseScene hour={hour} exploded={exploded} scrollTurn={scrollTurn} interactive={fine} active={visible} onReady={() => setReady(true)} />
+              <HouseScene hour={hour} exploded={exploded} scrollTurn={scrollTurn} interactive={fine} lite={!fine} active={visible} onReady={() => setReady(true)} />
             </div>
           )}
           <div aria-hidden className="pointer-events-none absolute left-4 top-4 hidden gap-6 sm:flex">

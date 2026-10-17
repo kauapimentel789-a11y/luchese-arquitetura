@@ -48,8 +48,9 @@ export function Cursor() {
       style={{ transform: "translate(-100px,-100px)" }}
     >
       <div
-        className="flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-marfim/95 text-carvao backdrop-blur-sm transition-[width,height,opacity] duration-500 ease-[cubic-bezier(.22,.8,.2,1)]"
-        style={{ width: active ? 116 : 8, height: active ? 116 : 8, opacity: active ? 1 : 0.0 }}
+        className="flex h-[116px] w-[116px] items-center justify-center rounded-full bg-marfim/95 text-carvao transition-[transform,opacity] duration-500 ease-[cubic-bezier(.22,.8,.2,1)] will-change-transform"
+        // escala em vez de largura/altura: o disco cresce sem recalcular o layout
+        style={{ transform: `translate(-50%,-50%) scale(${active ? 1 : 8 / 116})`, opacity: active ? 1 : 0.0 }}
       >
         <span
           className="label px-3 text-center text-[10px] leading-snug transition-opacity duration-300"

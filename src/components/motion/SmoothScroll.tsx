@@ -2,7 +2,8 @@
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/motion";
+import { gsap, ScrollTrigger, prefersReducedMotion, whenIdle } from "@/lib/motion";
+import { introPending } from "@/lib/intro";
 
 declare global {
   interface Window {
@@ -10,13 +11,22 @@ declare global {
   }
 }
 
-/** Rolagem suave (Lenis) sincronizada com o GSAP. Desligada com prefers-reduced-motion e em toque. */
+/** Rolagem suave (Lenis) sincronizada com o GSAP. Desligada com prefers-reduced-motion e em telas de toque. */
 export function SmoothScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // recalcula as posições depois do carregamento das imagens/fontes, fora da abertura
+    const onLoad = () => !introPending() && whenIdle(() => ScrollTrigger.refresh(), 800);
+    if (document.readyState === "complete") onLoad();
+    else window.addEventListener("load", onLoad, { once: true });
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.add("js");
-    if (prefersReducedMotion()) return;
+    // no toque a rolagem nativa já é suave e roda fora do JavaScript: o Lenis só entra com mouse/trackpad
+    if (prefersReducedMotion() || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true });
     window.__lenis = lenis;
     lenis.on("scroll", ScrollTrigger.update);

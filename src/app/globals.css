@@ -49,6 +49,18 @@ body[data-ambient="stone"] {
   --line-strong: rgb(23 24 22 / 0.34);
 }
 
+/* Troca de ambiente: o fundo do corpo muda de uma vez e uma camada fixa com a cor anterior
+   se dissolve por cima (só opacidade, feito na GPU). Antes a cor do corpo inteiro era animada,
+   o que redesenhava a página toda a cada quadro da rolagem. Ver AmbientController. */
+.ambient-fade {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: auto;
@@ -68,9 +80,6 @@ body {
   font-weight: 300;
   font-size: 17px;
   line-height: 1.65;
-  transition:
-    background-color 0.9s var(--ease-arq),
-    color 0.9s var(--ease-arq);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -417,9 +426,6 @@ html[data-intro="play"] body {
     visibility: hidden;
   }
 }
-[data-layer] {
-  clip-path: inset(0% 0% 0% 0%);
-}
 .pre-piece {
   fill: none;
   stroke-width: 21;
@@ -447,9 +453,8 @@ html[data-intro="play"] body {
   transform: scaleY(0);
 }
 .pre-word {
-  --ls: 1.1em;
-  letter-spacing: var(--ls);
-  padding-left: var(--ls);
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
   white-space: nowrap;
 }
 
@@ -457,6 +462,14 @@ html[data-intro="play"] body {
 .choice {
   flex: 1 1 0%;
   transition: flex-grow 1s var(--ease-arq);
+}
+.choice-img-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100vw;
+  height: 100lvh;
+  margin: -50lvh 0 0 -50vw;
 }
 .choice-img {
   transition: transform 1.6s var(--ease-arq);

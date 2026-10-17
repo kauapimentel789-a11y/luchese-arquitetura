@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, ScrollTrigger, useIsoLayoutEffect, prefersReducedMotion, whenIdle } from "@/lib/motion";
 import { finishIntro, introPending, setFoco, type Foco } from "@/lib/intro";
 import { Picture } from "@/components/ui/Picture";
 
@@ -88,6 +88,8 @@ export function Preloader() {
         const tl = gsap.timeline({
           defaults: { ease: "expo.inOut" },
           onComplete: () => {
+            // a página por baixo mede as posições de rolagem agora, enquanto a tela está parada na escolha
+            whenIdle(() => ScrollTrigger.refresh(), 1500);
             setChoosing(true);
             setTimeout(() => (q("[data-panel]")[0] as HTMLElement | undefined)?.focus({ preventScroll: true }), 60);
           },
@@ -97,9 +99,10 @@ export function Preloader() {
           .to(q("[data-tick]"), { scaleX: 0, duration: 0.5, ease: "power2.in" }, "<")
           .to(lockup, { y: lift, scale: small, duration: reduced ? 0.01 : 1.25 }, "<0.15")
           .fromTo(
-            panels,
-            { clipPath: "inset(100% 0% 0% 0%)" },
-            { clipPath: "inset(0% 0% 0% 0%)", duration: reduced ? 0.4 : 1.35, stagger: 0.12 },
+            q("[data-panel-inner]"),
+            // y: 0 zera o translate inicial da classe (que o GSAP converte em pixels)
+            { y: 0, yPercent: 101 },
+            { yPercent: 0, duration: reduced ? 0.4 : 1.35, stagger: 0.12 },
             "<0.2",
           )
           .fromTo(q("[data-panel-img]"), { scale: 1.28 }, { scale: 1, duration: reduced ? 0.01 : 1.8, ease: "expo.out", stagger: 0.12 }, "<0.25")
@@ -125,8 +128,9 @@ export function Preloader() {
           .to(other, { flexGrow: 0.0001, autoAlpha: 0.2, duration: reduced ? 0.3 : 1.1 }, 0.1)
           .to(q("[data-choices]"), { gap: 0, padding: 0, duration: reduced ? 0.3 : 1.1 }, 0.1)
           .to(picked.querySelector("[data-panel-shade]"), { opacity: 0, duration: 1 }, 0.3)
-          .to(q("[data-layer='main']"), { clipPath: "inset(0% 0% 100% 0%)", duration: reduced ? 0.5 : 1.15, ease: "power4.inOut" }, reduced ? 0.4 : 1.15)
-          .to(q("[data-layer='accent']"), { clipPath: "inset(0% 0% 100% 0%)", duration: reduced ? 0.5 : 1.15, ease: "power4.inOut" }, "<0.12")
+          .to(q("[data-layer='main']"), { yPercent: -100, duration: reduced ? 0.5 : 1.15, ease: "power4.inOut" }, reduced ? 0.4 : 1.15)
+          .to(q("[data-layer-inner]"), { yPercent: 100, duration: reduced ? 0.5 : 1.15, ease: "power4.inOut" }, "<")
+          .to(q("[data-layer='accent']"), { yPercent: -100, duration: reduced ? 0.5 : 1.15, ease: "power4.inOut" }, "<0.12")
           .add(finishIntro, "<0.3");
       };
 
@@ -134,13 +138,14 @@ export function Preloader() {
         gsap.set(q("[data-piece]"), { strokeDashoffset: 0 });
         gsap.set(q("[data-letter], [data-sub]"), { autoAlpha: 1 });
         gsap.set(q("[data-ghost], [data-rule]"), { autoAlpha: 0 });
-        gsap.set(q("[data-word]"), { "--ls": "0.34em" });
         gsap.set(q("[data-foot]"), { autoAlpha: 1 });
         Promise.all([ready, new Promise((r) => setTimeout(r, 500))]).then(toChooser);
         return;
       }
 
       // ato 1: a marca se monta
+      const letters = q("[data-letter]");
+      const em = parseFloat(getComputedStyle(q("[data-word]")[0]).fontSize) || 40;
       gsap.set(q("[data-g='a']"), { x: -78, y: 34 });
       gsap.set(q("[data-g='b']"), { x: 74, y: -82 });
 
@@ -164,20 +169,24 @@ export function Preloader() {
         .to(q("[data-rule]"), { autoAlpha: 0, duration: 0.8, ease: "power2.out" }, 2.75)
         // LUCHESE: letras soltas que assentam enquanto o espaçamento se fecha
         .fromTo(
-          q("[data-letter]"),
+          letters,
           {
             autoAlpha: 0,
             yPercent: () => gsap.utils.random(-150, 150),
-            xPercent: () => gsap.utils.random(-60, 60),
+            // espaçamento aberto (1,1em) que se fecha até o do logotipo (0,34em), só com transform
+            x: (i: number) => (i - (letters.length - 1) / 2) * 0.76 * em + gsap.utils.random(-0.3, 0.3) * em,
             rotate: () => gsap.utils.random(-28, 28),
-            filter: "blur(8px)",
+            scale: 0.82,
           },
-          { autoAlpha: 1, yPercent: 0, xPercent: 0, rotate: 0, filter: "blur(0px)", duration: 1.25, ease: "expo.out", stagger: { each: 0.07, from: "random" } },
+          { autoAlpha: 1, yPercent: 0, x: 0, rotate: 0, scale: 1, duration: 1.5, ease: "expo.out", stagger: { each: 0.07, from: "random" } },
           1.95,
         )
-        .fromTo(q("[data-word]"), { "--ls": "1.1em" }, { "--ls": "0.34em", duration: 1.7 }, 1.9)
         .fromTo(q("[data-sub]"), { autoAlpha: 0, yPercent: 110 }, { autoAlpha: 1, yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.03 }, 2.85);
 
+      // o React ainda está hidratando a página por baixo: espera o primeiro respiro do navegador
+      // para começar, assim as tarefas longas não engasgam o desenho
+      tl.pause();
+      whenIdle(() => tl.play(), 700);
       Promise.all([ready, new Promise((r) => tl.eventCallback("onComplete", r))]).then(toChooser);
     }, el);
 
@@ -192,8 +201,9 @@ export function Preloader() {
 
   return (
     <div ref={root} data-preloader className="preloader fixed inset-0 z-[120] text-marfim">
-      <div data-layer="accent" className="absolute inset-0 bg-bronze" />
-      <div data-layer="main" className="absolute inset-0 overflow-hidden bg-carvao">
+      <div data-layer="accent" className="absolute inset-0 bg-bronze will-change-transform" />
+      <div data-layer="main" className="absolute inset-0 overflow-hidden bg-carvao will-change-transform">
+       <div data-layer-inner className="absolute inset-0 will-change-transform">
         {/* ato 2: os dois caminhos */}
         <div
           data-choices
@@ -211,10 +221,13 @@ export function Preloader() {
               onClick={() => chooseRef.current(c.foco, i)}
               aria-label={`${c.title}: ${c.detail}`}
               data-cursor={choosing ? "Entrar" : undefined}
-              className="choice group relative min-h-0 overflow-hidden bg-carvao-2 text-left text-marfim outline-offset-[-6px] [clip-path:inset(100%_0%_0%_0%)]"
+              className="choice group relative min-h-0 overflow-hidden text-left text-marfim outline-offset-[-6px]"
             >
-              <span data-panel-img className="absolute inset-0 block">
-                <Picture name={c.image} alt="" priority sizes="(min-width: 768px) 50vw, 100vw" className="choice-img h-full w-full object-cover" />
+             <span data-panel-inner className="absolute inset-0 block translate-y-[101%] overflow-hidden bg-carvao-2 will-change-transform">
+              {/* a imagem tem o tamanho da tela e fica centrada no painel: quando o painel muda de largura,
+                  só o recorte muda, sem redesenhar a foto (por isso o hover e a saída ficam leves) */}
+              <span data-panel-img className="choice-img-box block will-change-transform">
+                <Picture name={c.image} alt="" priority sizes="100vw" className="choice-img h-full w-full object-cover" />
               </span>
               <span data-panel-shade className="choice-shade absolute inset-0 bg-[linear-gradient(180deg,rgba(23,24,22,.62)_0%,rgba(23,24,22,.25)_38%,rgba(23,24,22,.72)_100%)]" />
               <span data-panel-copy className="absolute inset-x-0 bottom-0 flex items-end gap-5 p-[clamp(18px,3.4vw,56px)] opacity-0">
@@ -228,6 +241,7 @@ export function Preloader() {
                   <span className="display t-md">{c.title}</span>
                 </span>
               </span>
+             </span>
             </button>
           ))}
         </div>
@@ -285,9 +299,10 @@ export function Preloader() {
             </p>
           </div>
           <div className="mt-4 h-px bg-white/10">
-            <div data-bar className="h-px origin-left scale-x-0 bg-bronze-claro" />
+            <div data-bar className="h-px origin-left bg-bronze-claro" style={{ transform: "scaleX(0)" }} />
           </div>
         </div>
+       </div>
       </div>
     </div>
   );

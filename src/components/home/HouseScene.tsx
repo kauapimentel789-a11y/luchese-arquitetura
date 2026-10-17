@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 /*
@@ -113,7 +113,7 @@ function sunFromHour(hour: number) {
   return { dir: dir.normalize(), el };
 }
 
-function Lighting({ hour }: { hour: number }) {
+function Lighting({ hour, lite }: { hour: number; lite: boolean }) {
   const sun = useRef<THREE.DirectionalLight>(null);
   const hemi = useRef<THREE.HemisphereLight>(null);
   const { scene } = useThree();
@@ -125,9 +125,12 @@ function Lighting({ hour }: { hour: number }) {
   const bgDay = useMemo(() => new THREE.Color("#1f201d"), []);
   const bgDusk = useMemo(() => new THREE.Color("#2a211a"), []);
   const tmp = useMemo(() => new THREE.Color(), []);
+  const bg = useMemo(() => new THREE.Color(), []);
 
-  useFrame((_, dt) => {
+  useFrame((state, dt) => {
     cur.current = THREE.MathUtils.damp(cur.current, target.current.hour, 3.2, dt);
+    // renderiza sob demanda: só pede o próximo quadro enquanto o sol ainda está chegando na hora escolhida
+    if (Math.abs(cur.current - target.current.hour) > 0.002) state.invalidate();
     const { dir, el } = sunFromHour(cur.current);
     const low = 1 - THREE.MathUtils.clamp(el / THREE.MathUtils.degToRad(35), 0, 1);
     if (sun.current) {
@@ -136,7 +139,7 @@ function Lighting({ hour }: { hour: number }) {
       sun.current.intensity = 1.2 + 2.2 * Math.min(1, el * 2.4);
     }
     if (hemi.current) hemi.current.intensity = 0.55 + 0.5 * (1 - low);
-    scene.background = tmp.copy(bgDay).lerp(bgDusk, low * 0.8).clone();
+    scene.background = bg.copy(bgDay).lerp(bgDusk, low * 0.8);
   });
 
   return (
@@ -146,7 +149,7 @@ function Lighting({ hour }: { hour: number }) {
         ref={sun}
         castShadow
         intensity={2.5}
-        shadow-mapSize={[2048, 2048]}
+        shadow-mapSize={lite ? [1024, 1024] : [2048, 2048]}
         shadow-camera-left={-40}
         shadow-camera-right={40}
         shadow-camera-top={40}
@@ -163,9 +166,19 @@ function House({ exploded, scrollTurn }: { exploded: boolean; scrollTurn: React.
   const m = useMaterials();
   const top = useRef<THREE.Group>(null);
   const root = useRef<THREE.Group>(null);
-  useFrame((_, dt) => {
-    if (top.current) top.current.position.y = THREE.MathUtils.damp(top.current.position.y, exploded ? 6 : 0, 3, dt);
-    if (root.current) root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, (scrollTurn.current ?? 0) * 0.5 - 0.25, 4, dt);
+  useFrame((state, dt) => {
+    let moving = false;
+    if (top.current) {
+      const to = exploded ? 6 : 0;
+      top.current.position.y = THREE.MathUtils.damp(top.current.position.y, to, 3, dt);
+      moving ||= Math.abs(top.current.position.y - to) > 0.002;
+    }
+    if (root.current) {
+      const to = (scrollTurn.current ?? 0) * 0.5 - 0.25;
+      root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, to, 4, dt);
+      moving ||= Math.abs(root.current.rotation.y - to) > 0.0005;
+    }
+    if (moving) state.invalidate();
   });
   return (
     <group ref={root}>
@@ -221,11 +234,24 @@ function House({ exploded, scrollTurn }: { exploded: boolean; scrollTurn: React.
   );
 }
 
+/** Pede um quadro novo quando algo de fora muda (rolagem, hora, pavimentos). */
+function Wake({ hour, exploded }: { hour: number; exploded: boolean }) {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => invalidate(), [hour, exploded, invalidate]);
+  useEffect(() => {
+    const on = () => invalidate();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [invalidate]);
+  return null;
+}
+
 export default function HouseScene({
   hour,
   exploded,
   scrollTurn,
   interactive,
+  lite = false,
   active,
   onReady,
 }: {
@@ -233,14 +259,16 @@ export default function HouseScene({
   exploded: boolean;
   scrollTurn: React.RefObject<number>;
   interactive: boolean;
+  /** Celular/tablet: resolução e sombras mais leves. */
+  lite?: boolean;
   active: boolean;
   onReady: () => void;
 }) {
   return (
     <Canvas
       shadows="percentage"
-      dpr={[1, 1.75]}
-      frameloop={active ? "always" : "never"}
+      dpr={lite ? [1, 1.25] : [1, 1.75]}
+      frameloop={active ? "demand" : "never"}
       camera={{ position: [46, 30, 54], fov: 28, near: 1, far: 400 }}
       gl={{ antialias: true, powerPreference: "high-performance" }}
       onCreated={({ gl }) => {
@@ -250,7 +278,8 @@ export default function HouseScene({
       }}
     >
       <fog attach="fog" args={["#1f201d", 70, 160]} />
-      <Lighting hour={hour} />
+      <Wake hour={hour} exploded={exploded} />
+      <Lighting hour={hour} lite={lite} />
       <group position={[2, 0, 0]}>
         <House exploded={exploded} scrollTurn={scrollTurn} />
       </group>

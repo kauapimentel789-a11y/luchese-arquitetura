@@ -21,19 +21,26 @@ export function Header() {
   useEffect(() => {
     setOverlayPage(!!document.querySelector("[data-hero-overlay]"));
     let last = window.scrollY;
-    const on = () => {
+    let frame = 0;
+    // no máximo uma leitura por quadro, e o React só é avisado quando o estado muda de fato
+    const read = () => {
+      frame = 0;
       const y = window.scrollY;
       setScrolled(y > 40);
-      setHidden(y > 320 && y > last + 2);
-      if (y < last - 2) setHidden(false);
+      if (y > 320 && y > last + 2) setHidden(true);
+      else if (y < last - 2 || y <= 320) setHidden(false);
       last = y;
     };
-    on();
+    const on = () => {
+      if (!frame) frame = requestAnimationFrame(read);
+    };
+    read();
     window.addEventListener("scroll", on, { passive: true });
     const mo = new MutationObserver(() => setAmbientDark(document.body.dataset.ambient === "dark"));
     mo.observe(document.body, { attributes: true, attributeFilter: ["data-ambient"] });
     setAmbientDark(document.body.dataset.ambient === "dark");
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("scroll", on);
       mo.disconnect();
     };
@@ -48,14 +55,13 @@ export function Header() {
         Pular para o conteúdo
       </a>
       <header
-        className="fixed inset-x-0 top-0 z-50 transition-[transform,background-color,color,border-color,backdrop-filter] duration-700 ease-[cubic-bezier(.22,.8,.2,1)]"
+        className="fixed inset-x-0 top-0 z-50 transition-[transform,background-color,color,border-color] duration-700 ease-[cubic-bezier(.22,.8,.2,1)]"
         style={{
           transform: hidden && !open ? "translateY(-100%)" : "translateY(0)",
           paddingTop: "env(safe-area-inset-top, 0px)",
           color: inverse ? "var(--color-marfim)" : "var(--color-carvao)",
-          backgroundColor: transparent ? "transparent" : "color-mix(in srgb, var(--bg) 84%, transparent)",
-          backdropFilter: transparent ? "none" : "blur(14px) saturate(1.1)",
-          WebkitBackdropFilter: transparent ? "none" : "blur(14px) saturate(1.1)",
+          // fundo quase opaco no lugar do desfoque de fundo, que pesava a cada quadro da rolagem
+          backgroundColor: transparent ? "transparent" : "color-mix(in srgb, var(--bg) 95%, transparent)",
           borderBottom: `1px solid ${transparent ? "rgb(245 243 238 / 0.18)" : "var(--line)"}`,
         }}
       >

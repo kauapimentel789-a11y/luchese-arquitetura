@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Picture } from "@/components/ui/Picture";
 import { RevealLines, FadeIn } from "@/components/motion/Reveal";
 import { TLink } from "@/components/motion/Transition";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, useIsoLayoutEffect, prefersReducedMotion, canScrub } from "@/lib/motion";
 
 /** Apresentação do escritório: declaração forte, texto institucional e imagem que muda de escala. */
 export function Intro() {
@@ -12,6 +12,14 @@ export function Intro() {
     const el = img.current;
     if (!el || prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
+      if (!canScrub()) {
+        // celular: a moldura se abre uma vez, por tempo, quando entra na tela
+        gsap
+          .timeline({ scrollTrigger: { trigger: el, start: "top 85%", once: true } })
+          .fromTo(el, { clipPath: "inset(12% 14% 12% 14%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" })
+          .fromTo(el.querySelector("img"), { scale: 1.28 }, { scale: 1, duration: 2.2, ease: "expo.out" }, 0.1);
+        return;
+      }
       gsap.fromTo(el, { clipPath: "inset(12% 14% 12% 14%)" }, {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "none",

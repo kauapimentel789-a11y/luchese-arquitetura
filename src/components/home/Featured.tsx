@@ -4,7 +4,7 @@ import { featured } from "@/content/projects";
 import { Picture } from "@/components/ui/Picture";
 import { TLink } from "@/components/motion/Transition";
 import { RevealLines } from "@/components/motion/Reveal";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, useIsoLayoutEffect, prefersReducedMotion, canScrub } from "@/lib/motion";
 
 /** Projeto em destaque: a imagem se expande até ocupar a largura da tela, como uma obra exposta. */
 export function Featured() {
@@ -14,6 +14,13 @@ export function Featured() {
     const el = frame.current;
     if (!el || prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
+      if (!canScrub()) {
+        gsap
+          .timeline({ scrollTrigger: { trigger: el, start: "top 85%", once: true } })
+          .fromTo(el, { clipPath: "inset(0% 9% 0% 9%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" })
+          .fromTo(el.querySelector("[data-img]"), { scale: 1.18 }, { scale: 1, duration: 2.2, ease: "expo.out" }, 0);
+        return;
+      }
       gsap.fromTo(el, { clipPath: "inset(0% 9% 0% 9%)" }, {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "none",

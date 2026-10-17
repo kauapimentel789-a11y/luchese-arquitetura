@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, useIsoLayoutEffect, prefersReducedMotion, canScrub } from "@/lib/motion";
 
 type Props = {
   children: React.ReactNode;
@@ -37,7 +37,7 @@ export function MediaReveal({ children, className = "", from = "bottom", paralla
       const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 86%", once: true }, delay });
       tl.fromTo(el, { clipPath: clips[from] }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" });
       if (inner) tl.fromTo(inner, { scale }, { scale: 1, duration: 2.2, ease: "expo.out" }, 0.1);
-      if (inner && parallax) {
+      if (inner && parallax && canScrub()) {
         gsap.fromTo(
           inner,
           { yPercent: -parallax },
@@ -65,7 +65,7 @@ export function Parallax({ children, speed = 10, className }: { children: React.
   const ref = useRef<HTMLDivElement>(null);
   useIsoLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    if (!el || !canScrub()) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,

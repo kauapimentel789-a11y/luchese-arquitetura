@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import type { Project } from "@/content/projects";
 import { Picture } from "@/components/ui/Picture";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, useIsoLayoutEffect, prefersReducedMotion, canScrub } from "@/lib/motion";
 
 export function ProjectHero({ p }: { p: Project }) {
   const root = useRef<HTMLElement>(null);
@@ -16,7 +16,7 @@ export function ProjectHero({ p }: { p: Project }) {
         .fromTo(q("[data-img]"), { scale: 1.2 }, { scale: 1, duration: 2.6, ease: "expo.out" })
         .fromTo(q("[data-line]"), { yPercent: 115 }, { yPercent: 0, duration: 1.4, stagger: 0.1, ease: "expo.out" }, 0.2)
         .fromTo(q("[data-fade]"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 1, stagger: 0.06 }, 0.6);
-      gsap.to(q("[data-par]"), { yPercent: 16, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
+      if (canScrub()) gsap.to(q("[data-par]"), { yPercent: 16, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
     }, el);
     return () => ctx.revert();
   }, []);

@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { Picture } from "@/components/ui/Picture";
 import { TLink } from "@/components/motion/Transition";
-import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
+import { gsap, useIsoLayoutEffect, prefersReducedMotion, canScrub } from "@/lib/motion";
 import { introPending, onIntroDone } from "@/lib/intro";
 
 /**
@@ -33,14 +33,16 @@ export function Hero() {
           .fromTo(q("[data-rule-v]"), { scaleY: 0 }, { scaleY: 1, duration: 1.6, transformOrigin: "top center" }, 1.25 + s)
           .fromTo(q("[data-fade]"), { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.2, stagger: 0.08 }, 1.45 + s);
 
-        // rolagem: a imagem desce mais devagar que o texto, que se dissolve
-        gsap.to(q("[data-scroll-img]"), {
-          yPercent: 14,
-          ease: "none",
-          scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true },
-        });
+        // rolagem: a imagem desce mais devagar que o texto, que se dissolve (no celular, só o fade)
+        const scrub = canScrub();
+        if (scrub)
+          gsap.to(q("[data-scroll-img]"), {
+            yPercent: 14,
+            ease: "none",
+            scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true },
+          });
         gsap.to(q("[data-scroll-text]"), {
-          yPercent: -38,
+          yPercent: scrub ? -38 : 0,
           // só opacidade: o título continua no mapa de acessibilidade ao rolar
           opacity: 0,
           ease: "none",

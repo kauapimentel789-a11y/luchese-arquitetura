@@ -36,8 +36,8 @@ export function ProjectIndex() {
     if (!prefersReducedMotion()) {
       gsap.fromTo(
         el.querySelectorAll("[data-card]"),
-        { autoAlpha: 0, y: 40, clipPath: "inset(12% 0% 0% 0%)" },
-        { autoAlpha: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, stagger: 0.08, ease: "expo.out" },
+        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 1, y: 0, duration: 1.2, stagger: 0.08, ease: "expo.out", clearProps: "transform" },
       );
     }
     ScrollTrigger.refresh();
@@ -47,7 +47,7 @@ export function ProjectIndex() {
 
   return (
     <>
-      <div className="sticky top-[calc(var(--header-h)-1px)] z-20 -mx-[var(--gutter)] mb-16 border-y border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] px-[var(--gutter)] backdrop-blur-md">
+      <div className="sticky top-[calc(var(--header-h)-1px)] z-20 -mx-[var(--gutter)] mb-16 border-y border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_96%,transparent)] px-[var(--gutter)]">
         <div className="no-scrollbar flex gap-8 overflow-x-auto py-4" role="group" aria-label="Filtrar por categoria">
           {(["Todos", ...categories] as const).map((c) => {
             const n = c === "Todos" ? projects.length : count(c);
@@ -75,7 +75,7 @@ export function ProjectIndex() {
             <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block">
               <div className={`media media-zoom ${filter === "Todos" ? ratios[i % ratios.length] : "aspect-[4/5]"}`}>
                 <Picture name={p.cover} alt={`${p.name}, ${p.location}`} sizes="(min-width:1024px) 60vw, 100vw" />
-                <span className="label absolute left-4 top-4 bg-carvao/70 px-2.5 py-1.5 text-marfim backdrop-blur-sm">Conceitual</span>
+                <span className="label absolute left-4 top-4 bg-carvao/80 px-2.5 py-1.5 text-marfim">Conceitual</span>
               </div>
               <div className="mt-5 grid grid-cols-12 gap-4 border-t border-[var(--line)] pt-4">
                 <p className="label muted col-span-2 tabular">{p.index}</p>
