@@ -31,7 +31,7 @@ export const site = {
     whatsappMessage:
       "Olá! Conheci o trabalho do escritório pelo site e gostaria de conversar sobre um projeto.",
     /** Cidade-base do estúdio. Ajuste quando houver endereço confirmado. */
-    city: "São Paulo, SP",
+    city: "Joinville, SC",
     address: null as string | null,
     hours: "Atendimento com hora marcada",
   },
