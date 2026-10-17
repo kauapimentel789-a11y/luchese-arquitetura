@@ -1,0 +1,10 @@
+// Publicação na Cloudflare (Workers com arquivos estáticos).
+// O build (`npm run build:static`) gera a pasta `out/`, que é enviada como está.
+{
+  "name": "luchese-arquitetura",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

@@ -61,7 +61,9 @@ Os botões de WhatsApp (menu, contato, rodapé, encerramento) só aparecem quand
 
 O site é todo estático (não há servidor), então roda em qualquer hospedagem de arquivos.
 
-**Cloudflare Pages (recomendado, plano grátis permite uso comercial)**: Workers & Pages → Create → Pages → conectar o repositório do GitHub.
+**Cloudflare (recomendado, plano grátis permite uso comercial)**: Workers & Pages → Create → importar o repositório do GitHub.
+Na tela de Workers: build command `npm run build:static`; deploy command `npx wrangler deploy` (lê `wrangler.jsonc`, que publica a pasta `out`).
+Na tela de Pages, se usada:
 - Framework preset: *None*
 - Build command: `npm run build:static`
 - Build output directory: `out`
