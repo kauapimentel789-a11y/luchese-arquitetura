@@ -19,8 +19,6 @@ export const site = {
     "Estúdio de arquitetura e interiores. Projetamos espaços com identidade, propósito e uma relação singular entre matéria, luz e paisagem.",
 
   contact: {
-    /** E-mail público exibido no rodapé e na página de contato. `null` = oculto. */
-    email: null as string | null,
     /** Telefone público, formato livre para exibição. */
     phone: "(47) 99745-3635" as string | null,
     /**

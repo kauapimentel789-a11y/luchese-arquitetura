@@ -55,11 +55,10 @@
 
 ## O que ainda depende do escritório
 
-1. **Formulário**: colocar `RESEND_API_KEY` + `CONTACT_TO_EMAIL` (ou `CONTACT_WEBHOOK_URL`) no deploy (Vercel). Sem isso o site avisa que a mensagem não foi enviada.
-2. **WhatsApp**: `NEXT_PUBLIC_WHATSAPP_NUMBER`.
-3. **Dados**: e-mail, telefone, redes sociais, CNPJ e CAU (`src/content/site.ts`).
-4. **Números** do escritório (a seção reaparece sozinha quando preenchidos).
-5. **Retrato** da arquiteta e eventuais membros da equipe.
+1. **Contato**: só pelo WhatsApp (47) 99745-3635, a pedido do escritório; formulário e e-mail removidos (2026-10-17).
+2. **Dados**: redes sociais, CNPJ e CAU (`src/content/site.ts`).
+3. **Números** do escritório (a seção reaparece sozinha quando preenchidos).
+4. **Retrato** da arquiteta e eventuais membros da equipe.
 6. **Projetos e fotos reais**: os seis atuais são estudos conceituais renderizados.
 7. **Domínio** e `NEXT_PUBLIC_SITE_URL` para SEO e compartilhamento.
 

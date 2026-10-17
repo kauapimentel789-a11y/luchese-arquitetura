@@ -39,13 +39,6 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li>{site.contact.city}</li>
               {site.contact.address && <li>{site.contact.address}</li>}
-              {site.contact.email && (
-                <li>
-                  <a className="link-draw" href={`mailto:${site.contact.email}`}>
-                    {site.contact.email}
-                  </a>
-                </li>
-              )}
               {site.contact.phone && <li>{site.contact.phone}</li>}
               {wa && (
                 <li>
@@ -54,11 +47,6 @@ export function Footer() {
                   </a>
                 </li>
               )}
-              <li>
-                <TLink href="/contato" label="Contato" className="link-draw">
-                  Formulário de contato
-                </TLink>
-              </li>
             </ul>
           </div>
           <div className="col-span-12 lg:col-span-2">

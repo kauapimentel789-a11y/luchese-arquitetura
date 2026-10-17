@@ -1,7 +1,7 @@
 # Luchese Arquitetura — site
 
 Site institucional e portfólio em **Next.js 15 + TypeScript + Tailwind CSS 4**, com **GSAP/ScrollTrigger** (animações de rolagem),
-**Lenis** (rolagem suave), **React Three Fiber** (maquete 3D) e uma rota de API para o formulário de contato.
+**Lenis** (rolagem suave), **React Three Fiber** (maquete 3D) O contato é feito só pelo WhatsApp (sem formulário nem e-mail).
 
 ## Rodar localmente
 
@@ -46,33 +46,7 @@ não há fotos de terceiros nem restrições de licença. Ficam em `public/image
 Para usar fotos reais: gere as versões com `python scripts/process_images.py <pasta-com-png>` (requer Pillow e NumPy) — o nome do arquivo
 vira a chave usada em `projects.ts` — ou coloque os arquivos manualmente seguindo o padrão `nome-<largura>.webp` e atualize o manifesto.
 
-## Formulário de contato (o que falta configurar)
-
-O formulário envia para `POST /api/contact` (`src/app/api/contact/route.ts`), que valida os dados (mesmo esquema no cliente e no servidor),
-tem campo-armadilha contra robôs e limite simples de tentativas. **Sem integração configurada, a rota responde 503 e o site informa que a
-mensagem não foi enviada** — nunca simula sucesso.
-
-Escolha uma das integrações e defina as variáveis de ambiente (na Vercel: Project → Settings → Environment Variables):
-
-**Opção A — e-mail via [Resend](https://resend.com)** (plano gratuito disponível)
-
-```
-RESEND_API_KEY=re_xxx
-CONTACT_TO_EMAIL=contato@seudominio.com.br        # pode ser uma lista separada por vírgulas
-CONTACT_FROM_EMAIL="Site Luchese <site@seudominio.com.br>"   # domínio verificado no Resend
-```
-
-Sem domínio verificado, o Resend só entrega para o e-mail da própria conta usando `onboarding@resend.dev` (padrão).
-
-**Opção B — webhook** (Make, Zapier, n8n, Formspree, Google Sheets via Apps Script…)
-
-```
-CONTACT_WEBHOOK_URL=https://...
-```
-
-Recebe um JSON com `name, email, phone, projectType, city, budget, timeline, message, receivedAt`.
-
-As duas podem ser usadas juntas.
+## Contato
 
 ### WhatsApp
 
@@ -87,8 +61,7 @@ Os botões de WhatsApp (menu, contato, rodapé, encerramento) só aparecem quand
 
 Recomendado: **Vercel** (importe a pasta/repositório; framework Next.js detectado automaticamente; configure as variáveis acima).
 
-Versão estática (sem API, usada na pré-visualização): `./scripts/build-static.sh` gera `out-preview/`, portátil para qualquer subpasta.
-Nela o formulário só envia se `NEXT_PUBLIC_CONTACT_ENDPOINT` apontar para um serviço externo (ex.: Formspree).
+Versão estática (usada na pré-visualização): `./scripts/build-static.sh` gera `out-preview/`, portátil para qualquer subpasta.
 
 ## Estrutura
 
