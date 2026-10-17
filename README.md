@@ -59,7 +59,18 @@ Os botões de WhatsApp (menu, contato, rodapé, encerramento) só aparecem quand
 
 ## Publicar
 
-Recomendado: **Vercel** (importe a pasta/repositório; framework Next.js detectado automaticamente; configure as variáveis acima).
+O site é todo estático (não há servidor), então roda em qualquer hospedagem de arquivos.
+
+**Cloudflare Pages (recomendado, plano grátis permite uso comercial)**: Workers & Pages → Create → Pages → conectar o repositório do GitHub.
+- Framework preset: *None*
+- Build command: `npm run build:static`
+- Build output directory: `out`
+- Variável opcional: `NEXT_PUBLIC_SITE_URL` com o domínio final.
+
+O arquivo `public/_headers` define cache e cabeçalhos de segurança na Cloudflare, e `.node-version` fixa o Node 22.
+As fontes ficam em `src/app/fonts/`, então o build não depende do Google Fonts.
+
+**Vercel**: também funciona com o build padrão (`npm run build`), mas o plano Hobby é só para uso não comercial.
 
 Versão estática (usada na pré-visualização): `./scripts/build-static.sh` gera `out-preview/`, portátil para qualquer subpasta.
 

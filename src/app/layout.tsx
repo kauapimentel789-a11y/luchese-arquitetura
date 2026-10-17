@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
@@ -11,14 +11,22 @@ import { AmbientController } from "@/components/motion/Ambient";
 import { Preloader } from "@/components/layout/Preloader";
 import { introBootScript } from "@/lib/intro";
 
-const serif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+/* Fontes hospedadas no próprio site (variáveis, subconjunto latino): o build não depende do Google Fonts. */
+const serif = localFont({
+  src: [
+    { path: "./fonts/cormorant.woff2", weight: "300 500", style: "normal" },
+    { path: "./fonts/cormorant-italic.woff2", weight: "300 500", style: "italic" },
+  ],
   variable: "--font-cormorant",
   display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
 });
-const sans = Jost({ subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-jost", display: "swap" });
+const sans = localFont({
+  src: [{ path: "./fonts/jost.woff2", weight: "300 500", style: "normal" }],
+  variable: "--font-jost",
+  display: "swap",
+  fallback: ["system-ui", "Helvetica Neue", "Arial", "sans-serif"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
