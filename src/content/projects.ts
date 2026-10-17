@@ -433,6 +433,11 @@ export const projects: Project[] = [
 
 export const featured = projects[0];
 
+/** Segunda imagem do projeto, mostrada ao passar o mouse sobre o card. */
+export function secondImage(p: Project) {
+  return p.gallery.find((g) => g.image !== p.cover)?.image;
+}
+
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }

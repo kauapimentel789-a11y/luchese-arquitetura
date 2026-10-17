@@ -1,6 +1,7 @@
 "use client";
 import { projects } from "@/content/projects";
-import { Picture } from "@/components/ui/Picture";
+import { SwapPicture } from "@/components/ui/SwapPicture";
+import { secondImage } from "@/content/projects";
 import { TLink } from "@/components/motion/Transition";
 import { MediaReveal, Parallax } from "@/components/motion/MediaReveal";
 import { RevealLines } from "@/components/motion/Reveal";
@@ -39,7 +40,7 @@ export function SelectedWorks() {
               <Parallax speed={l.speed}>
                 <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block">
                   <MediaReveal className={`${l.ratio} w-full media-zoom`} from={l.from}>
-                    <Picture name={p.cover} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
+                    <SwapPicture name={p.cover} second={secondImage(p)} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
                   </MediaReveal>
                   <div className="mt-5 flex items-start justify-between gap-6 border-t border-[var(--line)] pt-4">
                     <div>

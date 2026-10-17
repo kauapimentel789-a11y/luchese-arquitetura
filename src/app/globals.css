@@ -265,6 +265,18 @@ img {
 .media-zoom:hover img {
   transform: scale(1.045);
 }
+/* segunda imagem do card, revelada ao passar o mouse (ui/SwapPicture) */
+.media img.swap-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition:
+    opacity 0.9s var(--ease-arq),
+    transform 1.4s var(--ease-arq);
+}
+.group:hover img.swap-ready {
+  opacity: 1;
+}
 
 /* marcação técnica de prancha */
 .tick {
@@ -512,4 +524,93 @@ html[data-intro="play"] body {
 html[data-foco="interiores"] [data-foco-show="arquitetura"],
 html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
   display: none !important;
+}
+
+/* ---------- pontos interativos (home/Hotspots) ---------- */
+.hotspot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(245, 243, 238, 0.92);
+  color: var(--color-carvao);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.5s var(--ease-arq), background-color 0.4s;
+}
+.hotspot:hover,
+.hotspot[data-on] {
+  background: var(--color-bronze);
+  color: var(--color-marfim);
+}
+.hotspot-plus {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.5s var(--ease-arq);
+}
+.hotspot[data-on] .hotspot-plus {
+  transform: rotate(45deg);
+}
+.hotspot-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 243, 238, 0.9);
+  animation: hotspot-pulse 2.4s var(--ease-arq) infinite;
+}
+.hotspot[data-on] .hotspot-ring {
+  animation: none;
+  opacity: 0;
+}
+@keyframes hotspot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.hotspot-card {
+  position: absolute;
+  top: -12px;
+  width: min(260px, 70vw);
+  padding: 16px 18px 18px;
+  background: rgba(23, 24, 22, 0.88);
+  color: var(--color-marfim);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease-arq), transform 0.5s var(--ease-arq);
+}
+.hotspot-card.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* imagem com proporção fixa que cobre a moldura (como object-cover), para os pontos acompanharem a imagem */
+.cover-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  aspect-ratio: var(--ar);
+  transform: translate(-50%, -50%);
+}
+.cover-box > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .cover-box {
+    width: max(100%, calc(max(78svh, 440px) * var(--ar)));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hotspot-ring {
+    animation: none;
+  }
 }

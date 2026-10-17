@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { TransitionProvider } from "@/components/motion/Transition";
 import { Cursor } from "@/components/motion/Cursor";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { AmbientController } from "@/components/motion/Ambient";
 import { Preloader } from "@/components/layout/Preloader";
 import { introBootScript } from "@/lib/intro";
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="conteudo">{children}</main>
           <Footer />
           <Cursor />
+          <Magnetic />
         </TransitionProvider>
       </body>
     </html>

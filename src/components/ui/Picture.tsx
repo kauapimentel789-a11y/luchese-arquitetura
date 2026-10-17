@@ -23,13 +23,14 @@ type Props = {
   className?: string;
   imgClassName?: string;
   style?: React.CSSProperties;
+  onLoad?: () => void;
 };
 
 /**
  * Imagem responsiva gerada a partir do manifesto de renderizações.
  * Usa srcset em WebP, placeholder desfocado e carregamento tardio fora da primeira dobra.
  */
-export function Picture({ name, alt, sizes = "100vw", priority, className, imgClassName, style }: Props) {
+export function Picture({ name, alt, sizes = "100vw", priority, className, imgClassName, style, onLoad }: Props) {
   const m = images[name];
   if (!m) return null;
   const srcSet = m.widths.map((w) => `${asset(`/images/${name}-${w}.webp`)} ${w}w`).join(", ");
@@ -45,6 +46,7 @@ export function Picture({ name, alt, sizes = "100vw", priority, className, imgCl
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
+      onLoad={onLoad}
       className={imgClassName ?? className}
       style={{ backgroundImage: `url(${m.blur})`, backgroundSize: "cover", ...style }}
     />

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { categories, projects, type Category } from "@/content/projects";
+import { categories, projects, secondImage, type Category } from "@/content/projects";
 import { getFoco, INTRO_EVENT } from "@/lib/intro";
-import { Picture } from "@/components/ui/Picture";
+import { SwapPicture } from "@/components/ui/SwapPicture";
 import { TLink } from "@/components/motion/Transition";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/motion";
 
@@ -74,7 +74,7 @@ export function ProjectIndex() {
           <li key={p.slug} data-card className={`col-span-12 ${filter === "Todos" ? spans[i % spans.length] : i % 2 ? "lg:col-span-5 lg:col-start-8 lg:mt-[12vh]" : "lg:col-span-6"}`}>
             <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block">
               <div className={`media media-zoom ${filter === "Todos" ? ratios[i % ratios.length] : "aspect-[4/5]"}`}>
-                <Picture name={p.cover} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
+                <SwapPicture name={p.cover} second={secondImage(p)} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
               </div>
               <div className="mt-5 grid grid-cols-12 gap-4 border-t border-[var(--line)] pt-4">
                 <p className="label muted col-span-2 tabular">{p.index}</p>
