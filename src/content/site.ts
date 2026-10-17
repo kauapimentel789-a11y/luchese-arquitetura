@@ -22,12 +22,12 @@ export const site = {
     /** E-mail público exibido no rodapé e na página de contato. `null` = oculto. */
     email: null as string | null,
     /** Telefone público, formato livre para exibição. */
-    phone: null as string | null,
+    phone: "(47) 99745-3635" as string | null,
     /**
      * Número de WhatsApp no formato internacional, apenas dígitos (ex.: "5511999999999").
      * Pode ser definido também por NEXT_PUBLIC_WHATSAPP_NUMBER. `null` = botão oculto.
      */
-    whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || null) as string | null,
+    whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5547997453635") as string | null,
     whatsappMessage:
       "Olá! Conheci o trabalho do escritório pelo site e gostaria de conversar sobre um projeto.",
     /** Cidade-base do estúdio. Ajuste quando houver endereço confirmado. */

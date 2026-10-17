@@ -105,7 +105,7 @@ export function ContactForm() {
       )}
       {field("name", "Nome", <input {...aria("name")} autoComplete="name" required />)}
       {field("email", "E-mail", <input {...aria("email")} type="email" autoComplete="email" inputMode="email" required />)}
-      {field("phone", "Telefone", <input {...aria("phone")} type="tel" autoComplete="tel" inputMode="tel" placeholder="(11) 90000-0000" />, true)}
+      {field("phone", "Telefone", <input {...aria("phone")} type="tel" autoComplete="tel" inputMode="tel" placeholder="(47) 90000-0000" />, true)}
       {field("city", "Cidade do projeto", <input {...aria("city")} autoComplete="address-level2" required />)}
       {field(
         "projectType",
