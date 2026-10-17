@@ -144,7 +144,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
             {site.contact.phone && <p>{site.contact.phone}</p>}
             {wa && (
               <a href={wa} target="_blank" rel="noopener noreferrer" className="link-draw">
-                WhatsApp ↗
+                WhatsApp
               </a>
             )}
           </div>

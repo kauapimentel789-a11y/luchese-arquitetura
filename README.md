@@ -1,7 +1,7 @@
 # Luchese Arquitetura — site
 
 Site institucional e portfólio em **Next.js 15 + TypeScript + Tailwind CSS 4**, com **GSAP/ScrollTrigger** (animações de rolagem),
-**Lenis** (rolagem suave), **React Three Fiber** (maquete 3D) O contato é feito só pelo WhatsApp (sem formulário nem e-mail).
+**Lenis** (rolagem suave), **React Three Fiber** (maquete 3D) O contato é só pelo WhatsApp: o formulário monta a mensagem e abre o WhatsApp do escritório (sem e-mail e sem servidor).
 
 ## Rodar localmente
 

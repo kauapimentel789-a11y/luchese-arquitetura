@@ -10,9 +10,9 @@ export default function PrivacidadePage() {
         <p className="label mb-8">( política de privacidade )</p>
         <h1 className="display t-xl">Privacidade</h1>
         <div className="mt-12 grid gap-6 [&_h2]:label [&_h2]:mt-6">
-          <p className="lead">Este site não tem formulário nem cadastro. O contato com o escritório é feito pelo WhatsApp.</p>
+          <p className="lead">Este site não armazena dados. O formulário de contato apenas monta uma mensagem que você mesmo envia pelo WhatsApp do escritório.</p>
           <h2>Quais dados</h2>
-          <p>Apenas o que você decidir enviar na conversa pelo WhatsApp, como nome, telefone, informações sobre o projeto e arquivos.</p>
+          <p>Apenas o que você decidir enviar pelo WhatsApp: nome, cidade, tipo de projeto, prazo, faixa de investimento (opcional), a descrição do que deseja e o seu número de WhatsApp.</p>
           <h2>Para que usamos</h2>
           <p>Exclusivamente para responder ao seu contato e, se houver interesse mútuo, preparar uma proposta. Não vendemos nem compartilhamos esses dados para fins de marketing.</p>
           <h2>Por quanto tempo</h2>

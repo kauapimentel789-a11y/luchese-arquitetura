@@ -55,7 +55,7 @@
 
 ## O que ainda depende do escritório
 
-1. **Contato**: só pelo WhatsApp (47) 99745-3635, a pedido do escritório; formulário e e-mail removidos (2026-10-17).
+1. **Contato**: só pelo WhatsApp (47) 99745-3635, a pedido do escritório; o formulário não envia e-mail: monta a mensagem com as respostas e abre o WhatsApp (2026-10-17).
 2. **Dados**: redes sociais, CNPJ e CAU (`src/content/site.ts`).
 3. **Números** do escritório (a seção reaparece sozinha quando preenchidos).
 4. **Retrato** da arquiteta e eventuais membros da equipe.

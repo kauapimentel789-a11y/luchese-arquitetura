@@ -31,7 +31,6 @@ export function ClosingCTA() {
             {wa && (
               <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-light border-white/40">
                 <span>WhatsApp</span>
-                <span className="btn-arrow">↗</span>
               </a>
             )}
           </div>

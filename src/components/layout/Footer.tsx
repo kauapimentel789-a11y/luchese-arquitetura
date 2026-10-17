@@ -43,7 +43,7 @@ export function Footer() {
               {wa && (
                 <li>
                   <a className="link-draw" href={wa} target="_blank" rel="noopener noreferrer">
-                    WhatsApp ↗
+                    WhatsApp
                   </a>
                 </li>
               )}

@@ -85,7 +85,7 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-7">
             <TLink href="/contato" label="Contato" className="label link-draw hidden md:inline-flex">
-              Iniciar um projeto <span aria-hidden>↗</span>
+              Iniciar um projeto
             </TLink>
             <button
               type="button"
