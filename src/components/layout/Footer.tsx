@@ -80,7 +80,7 @@ export function Footer() {
             {site.legal.cnpj && <> · CNPJ {site.legal.cnpj}</>}
             {site.legal.cau && <> · {site.legal.cau}</>}
           </p>
-          <p>Projetos e imagens deste site são estudos conceituais e renderizações digitais.</p>
+          <p>As imagens dos projetos são renderizações digitais, não fotos de obra.</p>
           <div className="flex items-center gap-6">
             <TLink href="/privacidade" label="Privacidade" className="link-draw">
               Privacidade

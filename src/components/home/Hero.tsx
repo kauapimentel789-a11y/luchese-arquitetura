@@ -92,10 +92,10 @@ export function Hero() {
             <div data-img className="h-full w-full">
               <div className="h-full w-full animate-[slowzoom_38s_ease-in-out_infinite_alternate]">
                 <span data-foco-show="arquitetura" className="block h-full w-full">
-                  <Picture name="mirante-hero" alt="Residência Mirante ao entardecer: volume de concreto suspenso sobre um pavilhão de vidro e uma piscina de borda infinita" priority sizes="100vw" className="h-full w-full object-cover object-[72%_60%] md:object-center" />
+                  <Picture name="lazer-1" alt="Área de lazer ao entardecer: piscina, deck de madeira, mesa externa e jardim iluminado" priority sizes="100vw" className="h-full w-full object-cover object-[40%_60%] md:object-center" />
                 </span>
                 <span data-foco-show="interiores" className="block h-full w-full">
-                  <Picture name="jardins-living" alt="Estar do Apartamento Jardins: forro de madeira ripada, luz lateral e vista para o jardim" sizes="100vw" className="h-full w-full object-cover" />
+                  <Picture name="living-3" alt="Estar integrado à cozinha da Casa Muxarabi, com muxarabi de madeira e cristaleira iluminada" sizes="100vw" className="h-full w-full object-cover" />
                 </span>
               </div>
             </div>
@@ -110,16 +110,16 @@ export function Hero() {
         <div data-rule className="absolute left-[var(--gutter)] right-[var(--gutter)] top-[calc(var(--header-h)+18vh)] h-px bg-white/20" />
         <div data-rule-v className="absolute bottom-0 top-0 left-[66.6%] hidden w-px bg-white/12 lg:block" />
         <p data-fade className="label absolute right-[var(--gutter)] hidden sm:block top-[calc(var(--header-h)+18vh+14px)] text-right text-white/70">
-          23°15′ S · 47°17′ O
+          26°18′ S · 48°50′ O
           <br />
-          <span className="text-white/45">Estudo de implantação</span>
+          <span className="text-white/45">Joinville, SC</span>
         </p>
       </div>
 
       <div data-scroll-text className="relative z-10 flex h-full flex-col justify-end wrap pb-[max(40px,7vh)]">
         <div data-depth="16">
           <p data-fade className="label mb-7 text-pedra">
-            ( Arquitetura · Interiores · Paisagem )
+            ( Interiores · Marcenaria · Reforma )
           </p>
           <h1 className="display t-mega max-w-[17ch]">
             {["Arquitetura que", <span key="k1">transforma <em>a maneira</em></span>, "de viver."].map((l, i) => (
@@ -133,7 +133,7 @@ export function Hero() {
         </div>
         <div className="mt-10 grid grid-cols-12 items-end gap-y-8">
           <p data-fade className="lead col-span-12 max-w-[38ch] text-white/85 md:col-span-6 lg:col-span-4">
-            Projetamos espaços com identidade, propósito e uma relação singular entre matéria, luz e paisagem.
+            Projetamos interiores com identidade e propósito, onde marcenaria, luz e materiais trabalham juntos.
           </p>
           <div data-fade className="col-span-12 flex md:col-span-6 lg:col-span-4 lg:col-start-6">
             <TLink href="/projetos" label="Projetos" className="btn btn-light" data-cursor="Ver portfólio">
@@ -143,10 +143,10 @@ export function Hero() {
           </div>
           <div data-fade className="col-span-12 hidden items-end justify-between gap-6 lg:col-span-3 lg:col-start-10 lg:flex">
             <p className="label leading-relaxed text-white/60">
-              <span data-foco-show="arquitetura">(01) Residência Mirante</span>
-              <span data-foco-show="interiores">(03) Apartamento Jardins</span>
+              <span data-foco-show="arquitetura">(09) Área de Lazer</span>
+              <span data-foco-show="interiores">(01) Casa Muxarabi</span>
               <br />
-              Renderização conceitual
+              Renderização digital
             </p>
             <div className="flex flex-col items-center gap-3" aria-hidden>
               <span className="label text-white/60 [writing-mode:vertical-rl]">Rolar</span>

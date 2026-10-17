@@ -31,7 +31,7 @@ export function ProjectHero({ p }: { p: Project }) {
       <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,24,22,.5)_0%,rgba(23,24,22,0)_30%,rgba(23,24,22,.1)_55%,rgba(23,24,22,.85)_100%)]" />
       <div className="wrap relative flex h-full flex-col justify-end pb-[7vh]">
         <p data-fade className="label mb-6 text-pedra">
-          {p.index} · {p.category} · Projeto conceitual
+          {p.index} · {p.category} · Renderização digital
         </p>
         <h1 className="display t-mega">
           {[words.slice(0, -1).join(" "), <em key="l">{words[words.length - 1]}</em>].map((l, i) => (
@@ -44,10 +44,10 @@ export function ProjectHero({ p }: { p: Project }) {
         </h1>
         <div className="mt-10 grid grid-cols-2 gap-6 border-t border-white/20 pt-5 md:grid-cols-4">
           {[
-            ["Local", p.location],
-            ["Ano", p.year],
+            ["Ambientes", p.rooms],
+            ["Escopo", p.scope],
             ["Categoria", p.category],
-            ["Natureza", "Estudo · renderização digital"],
+            ["Imagens", "Renderizações digitais"],
           ].map(([k, v]) => (
             <div key={k} data-fade>
               <p className="label text-white/55">{k}</p>

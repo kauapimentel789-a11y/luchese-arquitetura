@@ -129,7 +129,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
                 <Picture name={l.image} alt="" sizes="40vw" />
               </div>
             ))}
-            <p className="label absolute -bottom-8 left-0 opacity-60">Renderização conceitual</p>
+            <p className="label absolute -bottom-8 left-0 opacity-60">Renderização digital</p>
           </div>
         </div>
 

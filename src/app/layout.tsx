@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.description,
-    images: [{ url: "/images/mirante-hero-1800.webp", width: 1800, height: 1013, alt: "Residência Mirante, renderização conceitual" }],
+    images: [{ url: "/images/living-3-1800.webp", width: 1800, height: 1002, alt: "Casa Muxarabi, renderização digital" }],
   },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/brand/monogram-black.png" },

@@ -74,8 +74,7 @@ export function ProjectIndex() {
           <li key={p.slug} data-card className={`col-span-12 ${filter === "Todos" ? spans[i % spans.length] : i % 2 ? "lg:col-span-5 lg:col-start-8 lg:mt-[12vh]" : "lg:col-span-6"}`}>
             <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block">
               <div className={`media media-zoom ${filter === "Todos" ? ratios[i % ratios.length] : "aspect-[4/5]"}`}>
-                <Picture name={p.cover} alt={`${p.name}, ${p.location}`} sizes="(min-width:1024px) 60vw, 100vw" />
-                <span className="label absolute left-4 top-4 bg-carvao/80 px-2.5 py-1.5 text-marfim">Conceitual</span>
+                <Picture name={p.cover} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
               </div>
               <div className="mt-5 grid grid-cols-12 gap-4 border-t border-[var(--line)] pt-4">
                 <p className="label muted col-span-2 tabular">{p.index}</p>
@@ -86,7 +85,7 @@ export function ProjectIndex() {
                 <p className="label muted col-span-10 col-start-3 leading-relaxed sm:col-span-3 sm:text-right">
                   {p.category}
                   <br />
-                  {p.location} · {p.year}
+                  {p.scope}
                 </p>
               </div>
             </TLink>

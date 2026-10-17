@@ -12,13 +12,13 @@ export function ClosingCTA() {
     <section data-ambient="dark" className="relative overflow-hidden text-marfim" aria-labelledby="cta-title">
       <div className="absolute inset-0">
         <Parallax speed={8} className="absolute inset-[-10%_0]">
-          <Picture name="mirante-dusk" alt="" sizes="100vw" className="h-full w-full object-cover" />
+          <Picture name="lazer-2" alt="" sizes="100vw" className="h-full w-full object-cover" />
         </Parallax>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,24,22,.85)_0%,rgba(23,24,22,.35)_45%,rgba(23,24,22,.9)_100%)]" />
       </div>
       <div className="wrap relative flex min-h-[100svh] flex-col justify-between py-[calc(var(--header-h)+6vh)]">
         <div className="flex justify-between gap-6 border-t border-white/20 pt-5">
-          <p className="label whitespace-nowrap">09 ( contato )</p>
+          <p className="label whitespace-nowrap">08 ( contato )</p>
           <p className="label text-white/60 hidden text-right sm:block">Respondemos em até dois dias úteis</p>
         </div>
         <div>

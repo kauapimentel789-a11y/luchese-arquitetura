@@ -14,18 +14,18 @@ export const site = {
   useTemporaryWordmark: false,
   temporaryWordmark: { name: "ATELIER", descriptor: "Architecture & Design" },
 
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lucheseararquitetura.com.br",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://luchese-arquitetura.kaua-pimentel789.workers.dev",
   description:
-    "Estúdio de arquitetura e interiores. Projetamos espaços com identidade, propósito e uma relação singular entre matéria, luz e paisagem.",
+    "Estúdio de arquitetura e interiores em Joinville, SC. Interiores, marcenaria sob medida, reforma de fachadas e áreas externas.",
 
   contact: {
     /** Telefone público, formato livre para exibição. */
-    phone: "(47) 99745-3635" as string | null,
+    phone: "(47) 99266-8181" as string | null,
     /**
      * Número de WhatsApp no formato internacional, apenas dígitos (ex.: "5511999999999").
      * Pode ser definido também por NEXT_PUBLIC_WHATSAPP_NUMBER. `null` = botão oculto.
      */
-    whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5547997453635") as string | null,
+    whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5547992668181") as string | null,
     whatsappMessage:
       "Olá! Conheci o trabalho do escritório pelo site e gostaria de conversar sobre um projeto.",
     /** Cidade-base do estúdio. Ajuste quando houver endereço confirmado. */
@@ -67,9 +67,9 @@ export const figures: {
 ];
 
 export const nav = [
-  { label: "Projetos", href: "/projetos", image: "mirante-pool" },
-  { label: "O escritório", href: "/escritorio", image: "jardins-kitchen" },
-  { label: "Serviços", href: "/#servicos", image: "atelier-wide" },
-  { label: "Processo", href: "/#processo", image: "planos-wide" },
-  { label: "Contato", href: "/contato", image: "mirante-dusk" },
+  { label: "Projetos", href: "/projetos", image: "cozinha-1" },
+  { label: "O escritório", href: "/escritorio", image: "living-1" },
+  { label: "Serviços", href: "/#servicos", image: "suite-closet-1" },
+  { label: "Processo", href: "/#processo", image: "quarto-office-2" },
+  { label: "Contato", href: "/contato", image: "lazer-1" },
 ] as const;

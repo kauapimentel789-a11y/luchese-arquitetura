@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { site } from "@/content/site";
 
-export const projectTypes = ["Residência nova", "Reforma", "Interiores", "Comercial / corporativo", "Hospitalidade", "Estudo de viabilidade", "Outro"] as const;
-export const budgets = ["Prefiro não informar", "Até R$ 500 mil", "R$ 500 mil a R$ 1,5 milhão", "R$ 1,5 a 3 milhões", "Acima de R$ 3 milhões"] as const;
+export const projectTypes = ["Interiores", "Reforma de interiores", "Marcenaria sob medida", "Reforma de fachada", "Área externa e de lazer", "Comercial", "Outro"] as const;
+export const budgets = ["Prefiro não informar", "Até R$ 50 mil", "R$ 50 a 150 mil", "R$ 150 a 300 mil", "Acima de R$ 300 mil"] as const;
 export const timelines = ["Ainda sem data", "Nos próximos 3 meses", "Em 3 a 6 meses", "Em 6 a 12 meses", "Depois de 12 meses"] as const;
 
 type Fields = "name" | "city" | "projectType" | "timeline" | "budget" | "message";
@@ -110,7 +110,7 @@ export function ContactForm() {
       {field(
         "message",
         "O que você quer",
-        <textarea {...aria("message")} rows={5} placeholder="Conte sobre o terreno ou imóvel, os ambientes que imagina e o que é importante para você." required />,
+        <textarea {...aria("message")} rows={5} placeholder="Conte sobre o imóvel, os ambientes que imagina e o que é importante para você." required />,
         false,
         true,
       )}

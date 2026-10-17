@@ -12,7 +12,7 @@ export function Studio() {
     <section data-ambient="light" className="section wrap" aria-labelledby="studio-title">
       <div className="grid-12 gap-y-16">
         <div className="col-span-12 flex justify-between gap-6 border-t border-[var(--line)] pt-5">
-          <p className="label whitespace-nowrap">08 ( sobre )</p>
+          <p className="label whitespace-nowrap">07 ( sobre )</p>
           <p className="label muted hidden text-right sm:block">Estúdio de arquitetura e interiores</p>
         </div>
 
@@ -20,8 +20,8 @@ export function Studio() {
           <RevealLines id="studio-title" className="display t-lg" lines={["Um estúdio pequeno,", <span key="k1">atenção <em>inteira</em>.</span>]} />
           <FadeIn stagger={0.1} className="mt-12 grid max-w-[58ch] gap-6">
             <p className="lead">
-              Fundado por {lead.name}, o escritório trabalha em duas escalas que se completam: a arquitetura, que organiza a casa no terreno, e o
-              interior, que dá forma ao cotidiano.
+              Fundado por {lead.name}, o escritório trabalha em duas frentes que se completam: o interior, que dá forma ao
+              cotidiano, e a reforma, que renova a casa por dentro e por fora.
             </p>
             <p className="muted">
               Cada projeto é conduzido de perto pela arquiteta responsável, com uma equipe enxuta e parceiros técnicos escolhidos para cada obra.
@@ -39,7 +39,7 @@ export function Studio() {
         <div className="col-span-12 grid grid-cols-2 gap-4 lg:col-span-4 lg:col-start-9">
           <Portrait person={lead} className="col-span-2 sm:col-span-1 lg:col-span-2" />
           <MediaReveal className="col-span-2 aspect-[3/2] sm:col-span-1 lg:hidden" from="right">
-            <Picture name="pedra_alta-entry" alt="" sizes="50vw" />
+            <Picture name="suite-penteadeira-3" alt="" sizes="50vw" />
           </MediaReveal>
         </div>
 

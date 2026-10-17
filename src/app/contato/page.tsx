@@ -47,7 +47,7 @@ export default function ContatoPage() {
             </div>
           </dl>
           <MediaReveal className="mt-14 hidden aspect-[4/5] lg:block" from="bottom">
-            <Picture name="lago-deck" alt="Varanda do Pavilhão do Lago, renderização conceitual" sizes="40vw" />
+            <Picture name="suite-penteadeira-2" alt="Suíte com painel ripado e penteadeira, renderização digital" sizes="40vw" />
           </MediaReveal>
         </div>
         <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-28">

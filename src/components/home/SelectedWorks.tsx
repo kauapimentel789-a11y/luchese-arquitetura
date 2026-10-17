@@ -21,9 +21,9 @@ export function SelectedWorks() {
       <div className="grid-12 mb-20 gap-y-8">
         <div className="col-span-12 flex justify-between gap-6 border-t border-[var(--line)] pt-5">
           <p className="label whitespace-nowrap">03 ( projetos selecionados )</p>
-          <p className="label muted hidden text-right sm:block">{String(projects.length).padStart(2, "0")} estudos</p>
+          <p className="label muted hidden text-right sm:block">{String(projects.length).padStart(2, "0")} projetos</p>
         </div>
-        <RevealLines id="works-title" className="display t-xl col-span-12 lg:col-span-9" lines={["Do terreno", <span key="k1">ao <em>detalhe</em>.</span>]} />
+        <RevealLines id="works-title" className="display t-xl col-span-12 lg:col-span-9" lines={["Da planta", <span key="k1">ao <em>detalhe</em>.</span>]} />
         <div className="col-span-12 flex items-end lg:col-span-3 lg:justify-end">
           <TLink href="/projetos" label="Projetos" className="label link-draw">
             Todos os projetos <span aria-hidden>→</span>
@@ -39,7 +39,7 @@ export function SelectedWorks() {
               <Parallax speed={l.speed}>
                 <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block">
                   <MediaReveal className={`${l.ratio} w-full media-zoom`} from={l.from}>
-                    <Picture name={p.cover} alt={`${p.name}, ${p.category.toLowerCase()} em ${p.location}`} sizes="(min-width:1024px) 60vw, 100vw" />
+                    <Picture name={p.cover} alt={`${p.name}: ${p.rooms}`} sizes="(min-width:1024px) 60vw, 100vw" />
                   </MediaReveal>
                   <div className="mt-5 flex items-start justify-between gap-6 border-t border-[var(--line)] pt-4">
                     <div>
@@ -48,11 +48,7 @@ export function SelectedWorks() {
                       </p>
                       <h3 className="display t-md transition-colors duration-500 group-hover:text-bronze">{p.name}</h3>
                     </div>
-                    <p className="label muted shrink-0 text-right leading-relaxed">
-                      {p.location}
-                      <br />
-                      {p.year}
-                    </p>
+                    <p className="label muted max-w-[22ch] shrink-0 text-right leading-relaxed">{p.scope}</p>
                   </div>
                 </TLink>
               </Parallax>

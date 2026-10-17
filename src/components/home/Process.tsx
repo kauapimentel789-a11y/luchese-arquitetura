@@ -6,13 +6,12 @@ import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/motion";
 
 /* pequenos diagramas de prancha para cada etapa, desenhados com traço */
 const diagrams = [
-  // 01 terreno: curvas de nível + marcador
+  // 01 levantamento: ambiente medido com cotas
   <g key="0">
-    <path d="M10 70 C40 50 70 80 110 60 S170 40 190 55" />
-    <path d="M10 90 C45 72 75 98 115 80 S170 62 190 76" />
-    <path d="M10 110 C50 95 80 118 120 100 S172 84 190 98" />
-    <circle cx="112" cy="62" r="6" />
-    <path d="M112 30 V56" />
+    <rect x="40" y="30" width="120" height="80" />
+    <path d="M40 126 H160 M40 120 V132 M160 120 V132" />
+    <path d="M176 30 V110 M170 30 H182 M170 110 H182" />
+    <path d="M40 70 H70" strokeDasharray="3 5" />
   </g>,
   // 02 croqui: volumes em perspectiva
   <g key="1">
@@ -77,7 +76,7 @@ export function Process() {
     <section ref={root} id="processo" data-ambient="stone" className="section wrap scroll-mt-20" aria-labelledby="process-title">
       <div className="grid-12 mb-20 gap-y-8">
         <div className="col-span-12 flex justify-between gap-6 border-t border-[var(--line)] pt-5">
-          <p className="label whitespace-nowrap">06 ( processo )</p>
+          <p className="label whitespace-nowrap">05 ( processo )</p>
           <p className="label muted hidden text-right sm:block">Cinco etapas</p>
         </div>
         <RevealLines id="process-title" className="display t-xl col-span-12 lg:col-span-9" lines={["Um método", <span key="k1">claro, do <em>briefing</em></span>, "à obra."]} />

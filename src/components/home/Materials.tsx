@@ -52,11 +52,11 @@ export function Materials() {
         <div ref={track} className="flex flex-col gap-16 wrap lg:w-max lg:flex-row lg:items-center lg:gap-[6vw] lg:pr-[12vw]">
           <div className="lg:w-[34vw] lg:shrink-0">
             <div className="mb-10 flex justify-between gap-6 border-t border-white/15 pt-5">
-              <p className="label whitespace-nowrap">07 ( materialidade )</p>
+              <p className="label whitespace-nowrap">06 ( materialidade )</p>
             </div>
             <RevealLines id="mat-title" className="display t-xl" lines={["Matéria,", <span key="k1">luz e <em>textura</em>.</span>]} />
             <p className="mt-8 max-w-[40ch] text-white/70">
-              Escolhemos poucos materiais e os deixamos aparentes. A luz rasante revela a fôrma do concreto, o veio da madeira e a irregularidade da pedra.
+              Escolhemos poucos materiais e os deixamos aparentes. A luz embutida revela o veio da madeira, a trama do muxarabi e o desenho da pedra.
             </p>
             <p className="label mt-10 hidden text-mineral lg:block">Continue rolando →</p>
           </div>

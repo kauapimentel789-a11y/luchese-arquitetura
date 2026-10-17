@@ -3,39 +3,39 @@
 export const services = [
   {
     index: "01",
-    title: "Arquitetura residencial",
-    text: "Casas novas do estudo de implantação ao projeto executivo: volumetria, fachadas, conforto ambiental e documentação para obra.",
-    image: "mirante-pool",
+    title: "Design de interiores",
+    text: "Layout, iluminação, revestimentos e curadoria de mobiliário, do primeiro estudo ao último objeto.",
+    image: "cozinha-2",
   },
   {
     index: "02",
-    title: "Arquitetura comercial",
-    text: "Escritórios, lojas e espaços de atendimento que traduzem a identidade de cada marca em planta, luz e materiais.",
-    image: "atelier-wide",
+    title: "Marcenaria sob medida",
+    text: "Painéis, cozinhas, closets, penteadeiras e estantes desenhados peça por peça, com iluminação embutida.",
+    image: "suite-closet-2",
   },
   {
     index: "03",
-    title: "Design de interiores",
-    text: "Layout, marcenaria, iluminação, revestimentos e curadoria de mobiliário, do primeiro estudo ao último objeto.",
-    image: "jardins-kitchen",
+    title: "Reforma de interiores",
+    text: "Leitura do que existe, decisão do que permanece e desenho do que muda, em casas e apartamentos.",
+    image: "living-5",
   },
   {
     index: "04",
-    title: "Reformas e requalificação",
-    text: "Leitura do que existe, decisão do que permanece e desenho do que muda, em casas, apartamentos e edifícios.",
-    image: "jardins-living",
+    title: "Reforma de fachadas",
+    text: "Uma nova cara para casas e pequenos edifícios: revestimentos, cores, esquadrias, iluminação e jardim de frente.",
+    image: "lazer-2",
   },
   {
     index: "05",
-    title: "Estudos de viabilidade",
-    text: "Análise do terreno, da legislação e do programa para orientar a compra de um lote ou o início de um projeto.",
-    image: "mirante-aerial",
+    title: "Áreas externas e de lazer",
+    text: "Piscina, deck, área gourmet e jardim pensados como mais um ambiente da casa.",
+    image: "gourmet-2",
   },
   {
     index: "06",
-    title: "Desenvolvimento e acompanhamento",
-    text: "Compatibilização com projetos complementares e visitas técnicas à obra, quando incluídas no contrato.",
-    image: "pedra_alta-entry",
+    title: "Espaços comerciais",
+    text: "Salões, lojas e espaços de atendimento que traduzem a identidade de cada marca em luz e materiais.",
+    image: "salao-1",
   },
 ];
 
@@ -43,20 +43,20 @@ export const process = [
   {
     index: "01",
     title: "Imersão e briefing",
-    text: "Conversas, visita ao terreno ou ao imóvel e levantamento das necessidades, rotinas e expectativas de quem vai usar o espaço.",
+    text: "Conversas, visita ao imóvel e levantamento das necessidades, rotinas e expectativas de quem vai usar o espaço.",
     output: "Programa de necessidades",
   },
   {
     index: "02",
     title: "Conceito e estudo preliminar",
-    text: "Primeiras ideias de implantação, volumetria e atmosfera, apresentadas em croquis, plantas e imagens.",
+    text: "Primeiras ideias de layout, materiais e atmosfera, apresentadas em plantas e imagens 3D.",
     output: "Estudo preliminar",
   },
   {
     index: "03",
     title: "Desenvolvimento do projeto",
-    text: "O estudo aprovado ganha medidas, materiais e soluções técnicas, e é compatibilizado com os projetos complementares.",
-    output: "Anteprojeto e projeto legal",
+    text: "O estudo aprovado ganha medidas, materiais e soluções técnicas de iluminação, elétrica e hidráulica.",
+    output: "Anteprojeto",
   },
   {
     index: "04",
@@ -73,12 +73,12 @@ export const process = [
 ];
 
 export const materials = [
-  { name: "Concreto aparente", note: "Fôrma de tábua, textura que guarda o desenho da madeira.", image: "mat-concreto" },
-  { name: "Pedra natural", note: "Fiadas irregulares de pedra local, assentadas a seco.", image: "mat-pedra" },
-  { name: "Madeira", note: "Ripas maciças que filtram a luz e aquecem o toque.", image: "macro-madeira" },
-  { name: "Vidro", note: "Canelado ou extra-clear, para revelar ou velar.", image: "macro-vidro" },
-  { name: "Metal", note: "Bronze escovado e aço escuro em perfis finos.", image: "macro-metal" },
-  { name: "Vegetação", note: "Gramíneas nativas que movem a luz ao longo do dia.", image: "macro-vegetacao" },
+  { name: "Madeira", note: "Painéis e prateleiras que aquecem o toque e organizam a parede.", image: "mat-madeira" },
+  { name: "Muxarabi", note: "Trama de madeira que filtra a vista sem fechar o ambiente.", image: "mat-muxarabi" },
+  { name: "Pedra", note: "Superfícies de veio marcante para bancadas e revestimentos.", image: "mat-pedra" },
+  { name: "Vidro e luz", note: "Cristaleiras e closets com perfis finos e iluminação embutida.", image: "mat-vidro" },
+  { name: "Metal preto", note: "Metais e perfis escuros que desenham os detalhes.", image: "mat-metal" },
+  { name: "Água e jardim", note: "Piscina iluminada e plantas tropicais nas áreas externas.", image: "mat-vegetacao" },
 ];
 
 /**
@@ -89,17 +89,17 @@ export const team = [
   {
     name: "Nicolly Luchese",
     role: "Arquiteta e urbanista, fundadora",
-    bio: "Conduz os projetos do estúdio da primeira conversa ao detalhe, nas escalas da casa, do interior e do jardim.",
+    bio: "Conduz os projetos do estúdio da primeira conversa ao detalhe da marcenaria, por dentro e por fora da casa.",
     credentials: null as string | null,
     portrait: null as string | null,
   },
 ];
 
 export const values = [
-  { title: "Contexto", text: "Cada projeto começa no lugar: clima, vista, vizinhança e a história de quem vai morar ou trabalhar ali." },
+  { title: "Contexto", text: "Cada projeto começa na casa que já existe e na história de quem vai morar ou trabalhar ali." },
   { title: "Matéria", text: "Poucos materiais, verdadeiros e bem detalhados, que envelhecem com dignidade." },
-  { title: "Luz", text: "Desenhamos aberturas, beirais e superfícies pensando no percurso do sol ao longo do dia." },
+  { title: "Luz", text: "A iluminação é desenhada junto com a marcenaria, e a luz natural guia o layout." },
   { title: "Proximidade", text: "Um estúdio pequeno, com atenção direta da arquiteta responsável em todas as etapas." },
 ];
 
-export const specialties = ["Residências unifamiliares", "Interiores residenciais", "Espaços comerciais", "Áreas externas e paisagismo", "Reformas"];
+export const specialties = ["Interiores residenciais", "Marcenaria sob medida", "Reforma de fachadas", "Áreas externas e de lazer", "Espaços comerciais"];

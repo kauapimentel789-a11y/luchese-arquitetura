@@ -41,26 +41,26 @@ export function Featured() {
       <div className="wrap mb-14 grid-12 items-end gap-y-8">
         <div className="col-span-12 flex justify-between gap-6 border-t border-white/15 pt-5">
           <p className="label whitespace-nowrap">02 ( projeto em destaque )</p>
-          <p className="label text-mineral hidden text-right sm:block">{p.category} · Estudo conceitual</p>
+          <p className="label text-mineral hidden text-right sm:block">{p.category} · Renderização digital</p>
         </div>
-        <RevealLines id="featured-title" as="h2" className="display t-xl col-span-12 lg:col-span-8" lines={[p.name.split(" ")[0], <em key="m">{p.name.split(" ")[1]}</em>]} />
+        <RevealLines id="featured-title" as="h2" className="display t-xl col-span-12 lg:col-span-8" lines={[p.name.split(" ").slice(0, -1).join(" "), <em key="m">{p.name.split(" ").slice(-1)[0]}</em>]} />
         <p className="lead col-span-12 text-white/75 lg:col-span-4">{p.tagline}</p>
       </div>
 
       <TLink href={`/projetos/${p.slug}`} label={p.name} data-cursor="Explorar projeto" className="group block" aria-label={`Ver o projeto ${p.name}`}>
         <div ref={frame} className="media h-[78svh] min-h-[440px] w-full">
           <div data-img className="absolute inset-0">
-            <Picture name="mirante-pool" alt="Piscina de borda infinita e deck de madeira da Residência Mirante" sizes="100vw" className="h-full w-full object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(.22,.8,.2,1)] group-hover:scale-[1.03]" />
+            <Picture name="living-4" alt="Cristaleira iluminada e escada da Casa Muxarabi" sizes="100vw" className="h-full w-full object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(.22,.8,.2,1)] group-hover:scale-[1.03]" />
           </div>
         </div>
       </TLink>
 
       <div className="wrap mt-8 grid grid-cols-2 gap-y-6 md:grid-cols-5">
         {[
-          ["Local", p.location],
-          ["Ano", p.year],
-          ["Programa", p.specs[0].value],
-          ["Estrutura", p.specs[4].value],
+          ["Ambientes", p.rooms],
+          ["Escopo", p.scope],
+          ["Categoria", p.category],
+          ["Imagens", "Renderizações digitais"],
         ].map(([k, v]) => (
           <div key={k} className="tick pt-4 pl-4">
             <p className="label text-mineral">{k}</p>

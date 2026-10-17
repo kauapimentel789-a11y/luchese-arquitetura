@@ -4,7 +4,6 @@ import { getProject, projects } from "@/content/projects";
 import { imageSrc, Picture } from "@/components/ui/Picture";
 import { ProjectHero } from "@/components/project/ProjectHero";
 import { Gallery } from "@/components/project/Gallery";
-import { PlanDiagram } from "@/components/project/PlanDiagram";
 import { ReadingProgress } from "@/components/project/ReadingProgress";
 import { MediaReveal } from "@/components/motion/MediaReveal";
 import { RevealLines, FadeIn } from "@/components/motion/Reveal";
@@ -42,7 +41,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="grid-12 gap-y-16">
           <div className="col-span-12 flex justify-between border-t border-[var(--line)] pt-5">
             <p className="label">( o projeto )</p>
-            <p className="label muted">Conteúdo demonstrativo</p>
+            <p className="label muted">Imagens renderizadas</p>
           </div>
           <div className="col-span-12 lg:col-span-7">
             <RevealLines className="display t-lg" lines={[p.tagline]} />
@@ -57,7 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <aside className="col-span-12 lg:col-span-4 lg:col-start-9" aria-label="Ficha técnica">
             <p className="label mb-4">Ficha técnica</p>
             <dl className="border-t border-[var(--line)]">
-              {[["Projeto", p.name], ["Local", p.location], ["Ano", p.year], ["Categoria", p.category], ...p.specs.map((s) => [s.label, s.value])].map(([k, v]) => (
+              {[["Projeto", p.name], ["Categoria", p.category], ...p.specs.map((s) => [s.label, s.value])].map(([k, v]) => (
                 <div key={k} className="grid grid-cols-5 gap-4 border-b border-[var(--line)] py-3 text-[15px]">
                   <dt className="label col-span-2 pt-1 muted">{k}</dt>
                   <dd className="col-span-3">{v}</dd>
@@ -110,24 +109,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )}
         </section>
       ))}
-
-      {/* planta */}
-      {p.plan && (
-        <section data-ambient="light" className="section wrap">
-          <div className="grid-12 items-end gap-y-10">
-            <div className="col-span-12 lg:col-span-4">
-              <p className="label mb-6">( implantação )</p>
-              <RevealLines className="display t-lg" lines={["Organização", <em key="e">em planta</em>]} />
-              <p className="mt-8 max-w-[40ch] muted">
-                Esquema simplificado da distribuição dos espaços, para leitura do partido. As medidas finais dependem do desenvolvimento do projeto.
-              </p>
-            </div>
-            <div className="col-span-12 lg:col-span-7 lg:col-start-6">
-              <PlanDiagram type={p.plan} />
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* galeria */}
       <section data-ambient="dark" className="section wrap text-marfim" aria-labelledby="gal-title">

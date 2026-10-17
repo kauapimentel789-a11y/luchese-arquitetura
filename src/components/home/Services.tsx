@@ -34,12 +34,12 @@ export function Services() {
     <section id="servicos" data-ambient="light" className="section wrap scroll-mt-20" aria-labelledby="services-title">
       <div className="grid-12 mb-16 gap-y-8">
         <div className="col-span-12 flex justify-between gap-6 border-t border-[var(--line)] pt-5">
-          <p className="label whitespace-nowrap">05 ( serviços )</p>
+          <p className="label whitespace-nowrap">04 ( serviços )</p>
           <p className="label muted hidden text-right sm:block">Seis frentes, um mesmo cuidado</p>
         </div>
-        <RevealLines id="services-title" className="display t-xl col-span-12 lg:col-span-8" lines={["Da casa", <span key="k1">ao <em>interior</em>.</span>]} />
+        <RevealLines id="services-title" className="display t-xl col-span-12 lg:col-span-8" lines={["Do interior", <span key="k1">à <em>fachada</em>.</span>]} />
         <p className="col-span-12 self-end muted lg:col-span-4">
-          Atuamos da escala do terreno à escala do objeto. Cada serviço pode ser contratado de forma independente ou integrado em um único projeto.
+          Atuamos do detalhe da marcenaria à fachada da casa. Cada serviço pode ser contratado de forma independente ou integrado em um único projeto.
         </p>
       </div>
 

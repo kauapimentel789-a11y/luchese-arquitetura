@@ -17,14 +17,14 @@ export default function EscritorioPage() {
       <section data-ambient="light" className="wrap pb-[var(--section)] pt-[calc(var(--header-h)+12vh)]">
         <div className="grid-12 gap-y-14">
           <p className="label col-span-12">( o escritório )</p>
-          <RevealLines as="h1" trigger="load" delay={0.3} className="display t-mega col-span-12" lines={["Matéria, luz", <span key="k1">e <em>paisagem</em>.</span>]} />
+          <RevealLines as="h1" trigger="load" delay={0.3} className="display t-mega col-span-12" lines={["Matéria, luz", <span key="k1">e <em>detalhe</em>.</span>]} />
           <FadeIn stagger={0.1} className="col-span-12 grid gap-6 md:col-span-6 lg:col-span-5 lg:col-start-7">
             <p className="lead">
-              Somos um estúdio de arquitetura e interiores que trabalha em duas escalas: a da casa no terreno e a do espaço vivido por dentro.
+              Somos um estúdio de arquitetura e interiores que trabalha de dentro para fora: o espaço vivido no dia a dia, a marcenaria que o organiza e a fachada que o apresenta.
             </p>
             <p className="muted">
-              Acreditamos que um bom projeto começa antes do desenho, na escuta. Por isso dedicamos tempo ao entendimento do lugar e de quem vai habitá-lo,
-              e só então propomos volumes, aberturas e materiais.
+              Acreditamos que um bom projeto começa antes do desenho, na escuta. Por isso dedicamos tempo ao entendimento da casa e de quem vai habitá-la,
+              e só então propomos layout, marcenaria e materiais.
             </p>
           </FadeIn>
         </div>
@@ -32,7 +32,7 @@ export default function EscritorioPage() {
 
       <section data-ambient="light" aria-label="Imagem">
         <MediaReveal className="h-[80svh] min-h-[420px] w-full" from="center">
-          <Picture name="pedra_alta-ext" alt="Casa Pedra Alta, renderização conceitual" sizes="100vw" />
+          <Picture name="living-2" alt="Estar e cozinha integrados da Casa Muxarabi, renderização digital" sizes="100vw" />
         </MediaReveal>
       </section>
 
@@ -49,7 +49,7 @@ export default function EscritorioPage() {
             </p>
             <p className="muted">
               Nossa abordagem combina rigor técnico e sensibilidade: proporção, conforto ambiental e detalhamento cuidadoso a serviço de espaços serenos,
-              abertos à paisagem e feitos para durar.
+              acolhedores e feitos para durar.
             </p>
           </FadeIn>
         </div>

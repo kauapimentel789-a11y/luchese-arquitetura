@@ -26,16 +26,16 @@ const CHOICES: { foco: Foco; n: string; title: string; detail: string; image: st
     n: "01",
     title: "Arquitetura interna",
     detail: "Interiores, marcenaria, luz e mobiliário",
-    image: "jardins-living",
-    alt: "Estar do Apartamento Jardins com forro de madeira e vista para o jardim",
+    image: "cozinha-1",
+    alt: "Cozinha aberta com mesa redonda de madeira, ilha e painel ripado",
   },
   {
     foco: "arquitetura",
     n: "02",
     title: "Arquitetura externa",
-    detail: "Residências, volumes, fachadas e paisagem",
-    image: "mirante-hero",
-    alt: "Residência Mirante ao entardecer, volume de concreto sobre pavilhão de vidro",
+    detail: "Reforma de fachadas, áreas de lazer e jardins",
+    image: "lazer-1",
+    alt: "Área de lazer ao entardecer com piscina, deck de madeira e jardim iluminado",
   },
 ];
 

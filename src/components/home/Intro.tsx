@@ -45,21 +45,22 @@ export function Intro() {
         <RevealLines
           id="intro-title"
           className="display t-xl col-span-12 lg:col-span-11"
-          lines={["Não desenhamos", <span key="k1">apenas edifícios. <em>Criamos</em></span>, "experiências de habitar."]}
+          lines={["Não desenhamos", <span key="k1">apenas ambientes. <em>Criamos</em></span>, "experiências de habitar."]}
         />
 
         <div className="col-span-12 grid gap-10 md:col-span-6 lg:col-span-4 lg:col-start-2 lg:pt-24">
           <FadeIn stagger={0.12} className="grid gap-6">
             <p className="lead">
-              Cada projeto nasce de uma leitura atenta do lugar: a orientação do sol, o desenho do terreno, a vista que merece ser emoldurada e a
-              rotina de quem vai viver ali.
+              Cada projeto nasce de uma leitura atenta da casa e de quem vive nela: a luz que entra, os caminhos do dia a dia, o que precisa ficar à
+              mão e o que merece ficar à vista.
             </p>
             <p className="muted">
-              Trabalhamos com poucos materiais, escolhidos pela verdade que carregam: o concreto que guarda a marca da fôrma, a pedra assentada em
-              fiadas, a madeira que aquece o toque. A luz natural é tratada como matéria de projeto, desenhada em beirais, aberturas e superfícies.
+              Trabalhamos com poucos materiais, escolhidos pela verdade que carregam: a madeira que aquece o toque, a pedra das bancadas, o vidro
+              que deixa a luz atravessar. A iluminação é desenhada junto com a marcenaria, peça por peça.
             </p>
             <p className="muted">
-              O resultado são casas e interiores serenos, precisos nas proporções e abertos à paisagem, pensados para envelhecer bem.
+              O resultado são interiores serenos, precisos nas proporções e pensados para envelhecer bem. Do lado de fora, reformamos fachadas e
+              áreas externas com o mesmo cuidado.
             </p>
             <div className="pt-4">
               <TLink href="/escritorio" label="O escritório" className="label link-draw">
@@ -71,11 +72,11 @@ export function Intro() {
 
         <figure className="col-span-12 md:col-span-6 lg:col-span-6 lg:col-start-7">
           <div ref={img} className="media aspect-[4/5] w-full">
-            <Picture name="mirante-living" alt="Estar da Residência Mirante, com piso de travertino e vista para a piscina" sizes="(min-width: 1024px) 50vw, 100vw" />
+            <Picture name="hall-3" alt="Muxarabi de madeira, espelho orgânico e balcão de bar com banquetas" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
           <figcaption className="mt-4 flex justify-between gap-6 border-t border-[var(--line)] pt-3">
-            <span className="label">Fig. 01 — Estar integrado ao jardim</span>
-            <span className="label muted">Renderização conceitual</span>
+            <span className="label">Fig. 01 — Muxarabi e balcão de bar</span>
+            <span className="label muted">Renderização digital</span>
           </figcaption>
         </figure>
       </div>
