@@ -3,6 +3,11 @@
 {
   "name": "luchese-arquitetura",
   "compatibility_date": "2025-09-01",
+  // Domínio próprio (a zona luchesearquitetura.com.br precisa existir na conta).
+  "routes": [
+    { "pattern": "luchesearquitetura.com.br", "custom_domain": true },
+    { "pattern": "www.luchesearquitetura.com.br", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page"

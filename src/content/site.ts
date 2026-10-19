@@ -14,7 +14,7 @@ export const site = {
   useTemporaryWordmark: false,
   temporaryWordmark: { name: "ATELIER", descriptor: "Architecture & Design" },
 
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://luchese-arquitetura.kaua-pimentel789.workers.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://luchesearquitetura.com.br",
   description:
     "Estúdio de arquitetura e interiores em Joinville, SC. Interiores, marcenaria sob medida, reforma de fachadas e áreas externas.",
 
