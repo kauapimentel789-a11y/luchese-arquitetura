@@ -80,7 +80,7 @@ export function ProjectIndex() {
                 <p className="label muted col-span-2 tabular">{p.index}</p>
                 <div className="col-span-10 sm:col-span-7">
                   <h2 className="display t-md transition-colors duration-500 group-hover:text-bronze">{p.name}</h2>
-                  <p className="mt-2 text-[15px] muted">{p.tagline}</p>
+                  <p className="mt-2 text-[0.9375rem] muted">{p.tagline}</p>
                 </div>
                 <p className="label muted col-span-10 col-start-3 leading-relaxed sm:col-span-3 sm:text-right">
                   {p.category}

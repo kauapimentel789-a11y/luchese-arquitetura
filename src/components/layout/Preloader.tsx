@@ -209,7 +209,7 @@ export function Preloader() {
           data-choices
           role="group"
           aria-label="Escolha por onde começar"
-          className="choices absolute inset-0 flex flex-col gap-[clamp(8px,1.4vw,22px)] p-[clamp(8px,1.4vw,22px)] md:flex-row"
+          className="choices absolute inset-0 flex flex-col gap-[clamp(0.5rem,1.4vw,1.375rem)] p-[clamp(0.5rem,1.4vw,1.375rem)] md:flex-row"
         >
           {CHOICES.map((c, i) => (
             <button
@@ -221,7 +221,7 @@ export function Preloader() {
               onClick={() => chooseRef.current(c.foco, i)}
               aria-label={`${c.title}: ${c.detail}`}
               data-cursor={choosing ? "Entrar" : undefined}
-              className="choice group relative min-h-0 overflow-hidden text-left text-marfim outline-offset-[-6px]"
+              className="choice group relative min-h-0 overflow-hidden text-left text-marfim outline-offset-[-0.375rem]"
             >
              <span data-panel-inner className="absolute inset-0 block translate-y-[101%] overflow-hidden bg-carvao-2 will-change-transform">
               {/* a imagem tem o tamanho da tela e fica centrada no painel: quando o painel muda de largura,
@@ -230,8 +230,8 @@ export function Preloader() {
                 <Picture name={c.image} alt="" priority sizes="100vw" className="choice-img h-full w-full object-cover" />
               </span>
               <span data-panel-shade className="choice-shade absolute inset-0 bg-[linear-gradient(180deg,rgba(23,24,22,.62)_0%,rgba(23,24,22,.25)_38%,rgba(23,24,22,.72)_100%)]" />
-              <span data-panel-copy className="absolute inset-x-0 bottom-0 flex items-end gap-5 p-[clamp(18px,3.4vw,56px)] opacity-0">
-                <span aria-hidden className="choice-arrow grid h-[clamp(48px,4.4vw,64px)] w-[clamp(48px,4.4vw,64px)] shrink-0 place-items-center bg-marfim text-[20px] text-carvao">
+              <span data-panel-copy className="absolute inset-x-0 bottom-0 flex items-end gap-5 p-[clamp(1.125rem,3.4vw,3.5rem)] opacity-0">
+                <span aria-hidden className="choice-arrow grid h-[clamp(3rem,4.4vw,4rem)] w-[clamp(3rem,4.4vw,4rem)] shrink-0 place-items-center bg-marfim text-[1.25rem] text-carvao">
                   <span className="choice-arrow-glyph">→</span>
                 </span>
                 <span className="flex min-w-0 flex-col gap-2">
@@ -255,7 +255,7 @@ export function Preloader() {
               <span data-rule="h" className="pre-rule-h bottom-0" />
               <span data-rule="v" className="pre-rule-v left-0" />
               <span data-rule="v" className="pre-rule-v right-0" />
-              <svg data-mono viewBox="0 0 360 417" className="relative block h-auto w-[clamp(64px,8vw,104px)] overflow-visible" aria-hidden>
+              <svg data-mono viewBox="0 0 360 417" className="relative block h-auto w-[clamp(4rem,8vw,6.5rem)] overflow-visible" aria-hidden>
                 <g data-ghost className="opacity-0" fill="none" stroke="rgb(245 243 238 / 0.28)" strokeWidth="1.5" strokeDasharray="5 7">
                   <path d={PIECE_A} />
                   <path d={PIECE_B} />
@@ -270,14 +270,14 @@ export function Preloader() {
             </div>
             <span data-tick className="mt-7 block h-px w-10 origin-center scale-x-0 bg-bronze-claro" />
             <span aria-hidden className="mt-7 flex flex-col items-center leading-none">
-              <span data-word className="pre-word font-sans font-normal text-[clamp(28px,4.2vw,54px)]">
+              <span data-word className="pre-word font-sans font-normal text-[clamp(1.75rem,4.2vw,3.375rem)]">
                 {WORD.map((l, i) => (
                   <span key={i} data-letter className="inline-block opacity-0">
                     {l}
                   </span>
                 ))}
               </span>
-              <span className="mt-4 flex overflow-hidden pl-[0.55em] font-sans text-[clamp(10px,1.05vw,13px)] font-medium tracking-[0.55em]">
+              <span className="mt-4 flex overflow-hidden pl-[0.55em] font-sans text-[clamp(0.625rem,1.05vw,0.8125rem)] font-medium tracking-[0.55em]">
                 {SUB.map((l, i) => (
                   <span key={i} data-sub className="inline-block opacity-0">
                     {l}
@@ -288,7 +288,7 @@ export function Preloader() {
           </div>
         </div>
 
-        <div data-foot className="wrap pointer-events-none absolute inset-x-0 bottom-0 pb-[max(28px,env(safe-area-inset-bottom))] opacity-0" role="status">
+        <div data-foot className="wrap pointer-events-none absolute inset-x-0 bottom-0 pb-[max(1.75rem,env(safe-area-inset-bottom))] opacity-0" role="status">
           <div className="flex items-end justify-between gap-6">
             <p className="label hidden text-white/45 sm:block">Arquitetura · Interiores · Paisagem</p>
             <span className="sm:hidden" />

@@ -84,7 +84,7 @@ export function Hero() {
       data-hero-overlay
       data-ambient="dark"
       aria-label="Abertura"
-      className="relative h-[100svh] min-h-[620px] overflow-hidden bg-carvao text-marfim"
+      className="relative h-[100svh] min-h-[38.75rem] overflow-hidden bg-carvao text-marfim"
     >
       <div data-frame className="absolute inset-0">
         <div data-scroll-img className="absolute inset-0">
@@ -109,14 +109,14 @@ export function Hero() {
       <div aria-hidden data-depth="10" className="pointer-events-none absolute inset-0">
         <div data-rule className="absolute left-[var(--gutter)] right-[var(--gutter)] top-[calc(var(--header-h)+18vh)] h-px bg-white/20" />
         <div data-rule-v className="absolute bottom-0 top-0 left-[66.6%] hidden w-px bg-white/12 lg:block" />
-        <p data-fade className="label absolute right-[var(--gutter)] hidden sm:block top-[calc(var(--header-h)+18vh+14px)] text-right text-white/70">
+        <p data-fade className="label absolute right-[var(--gutter)] hidden sm:block top-[calc(var(--header-h)+18vh+0.875rem)] text-right text-white/70">
           26°18′ S · 48°50′ O
           <br />
           <span className="text-white/45">Joinville, SC</span>
         </p>
       </div>
 
-      <div data-scroll-text className="relative z-10 flex h-full flex-col justify-end wrap pb-[max(40px,7vh)]">
+      <div data-scroll-text className="relative z-10 flex h-full flex-col justify-end wrap pb-[max(2.5rem,7vh)]">
         <div data-depth="16">
           <p data-fade className="label mb-7 text-pedra">
             ( Interiores · Marcenaria · Reforma )

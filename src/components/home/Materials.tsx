@@ -74,7 +74,7 @@ export function Materials() {
                       <span>{m.name}</span>
                       <span className="text-mineral tabular">{String(i + 1).padStart(2, "0")}</span>
                     </p>
-                    <p className="mt-2 text-[15px] text-mineral">{m.note}</p>
+                    <p className="mt-2 text-[0.9375rem] text-mineral">{m.note}</p>
                   </figcaption>
                 </figure>
               </li>

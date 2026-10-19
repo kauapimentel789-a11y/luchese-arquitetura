@@ -31,7 +31,7 @@ export default function EscritorioPage() {
       </section>
 
       <section data-ambient="light" aria-label="Imagem">
-        <MediaReveal className="h-[80svh] min-h-[420px] w-full" from="center">
+        <MediaReveal className="h-[80svh] min-h-[26.25rem] w-full" from="center">
           <Picture name="living-2" alt="Estar e cozinha integrados da Casa Muxarabi, renderização digital" sizes="100vw" />
         </MediaReveal>
       </section>
@@ -68,7 +68,7 @@ export default function EscritorioPage() {
               <Portrait person={t} className="col-span-12 sm:col-span-5 lg:col-span-4" />
               <div className="col-span-12 sm:col-span-7 lg:col-span-6 lg:col-start-6">
                 <p className="lead">{t.bio}</p>
-                <p className="mt-6 text-[15px] muted">
+                <p className="mt-6 text-[0.9375rem] muted">
                   {t.credentials ?? "Formação e registro profissional (CAU) serão exibidos aqui quando informados pelo escritório."}
                 </p>
                 <p className="label mb-3 mt-10">Especialidades</p>
@@ -106,7 +106,7 @@ export default function EscritorioPage() {
             {process.map((s) => (
               <li key={s.index} className="border-t border-white/15 pt-4">
                 <p className="display t-md tabular">{s.index}</p>
-                <p className="mt-2 text-[15px]">{s.title}</p>
+                <p className="mt-2 text-[0.9375rem]">{s.title}</p>
               </li>
             ))}
           </ol>

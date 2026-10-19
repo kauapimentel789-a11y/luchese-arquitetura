@@ -48,12 +48,12 @@ export function Cursor() {
       style={{ transform: "translate(-100px,-100px)" }}
     >
       <div
-        className="flex h-[116px] w-[116px] items-center justify-center rounded-full bg-marfim/95 text-carvao transition-[transform,opacity] duration-500 ease-[cubic-bezier(.22,.8,.2,1)] will-change-transform"
+        className="flex h-[7.25rem] w-[7.25rem] items-center justify-center rounded-full bg-marfim/95 text-carvao transition-[transform,opacity] duration-500 ease-[cubic-bezier(.22,.8,.2,1)] will-change-transform"
         // escala em vez de largura/altura: o disco cresce sem recalcular o layout
         style={{ transform: `translate(-50%,-50%) scale(${active ? 1 : 8 / 116})`, opacity: active ? 1 : 0.0 }}
       >
         <span
-          className="label px-3 text-center text-[10px] leading-snug transition-opacity duration-300"
+          className="label px-3 text-center text-[0.625rem] leading-snug transition-opacity duration-300"
           style={{ opacity: active ? 1 : 0, letterSpacing: "0.18em" }}
         >
           {label}

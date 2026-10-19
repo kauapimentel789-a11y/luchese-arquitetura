@@ -69,7 +69,7 @@ export function ContactForm() {
       </label>
       {input}
       {errors[name] && (
-        <p id={`e-${name}`} className="text-[14px] text-[#a5523c]">
+        <p id={`e-${name}`} className="text-[0.875rem] text-[#a5523c]">
           {errors[name]}
         </p>
       )}
@@ -124,7 +124,7 @@ export function ContactForm() {
             </span>
           </button>
         </div>
-        <p className="muted text-[14px]" role="status">
+        <p className="muted text-[0.875rem]" role="status">
           {opened
             ? "Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar por lá."
             : `Ao enviar, o WhatsApp abre com as suas respostas já escritas para o escritório${site.contact.phone ? `, no ${site.contact.phone}` : ""}.`}

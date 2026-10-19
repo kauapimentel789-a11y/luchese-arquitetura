@@ -25,7 +25,7 @@ export function Portrait({ person, className = "" }: { person: Person; className
       <figcaption className="mt-4 border-t border-[var(--line)] pt-3">
         <p className="display t-md">{person.name}</p>
         <p className="label muted mt-2">{person.role}</p>
-        {person.credentials && <p className="mt-1 text-[14px] muted">{person.credentials}</p>}
+        {person.credentials && <p className="mt-1 text-[0.875rem] muted">{person.credentials}</p>}
       </figcaption>
     </figure>
   );

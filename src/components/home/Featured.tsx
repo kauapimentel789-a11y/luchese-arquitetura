@@ -59,7 +59,7 @@ export function Featured() {
         <p className="lead col-span-12 text-white/75 lg:col-span-4">{p.tagline}</p>
       </div>
 
-      <div ref={frame} className="media aspect-[2400/1331] w-full md:aspect-auto md:h-[78svh] md:min-h-[440px]">
+      <div ref={frame} className="media aspect-[2400/1331] w-full md:aspect-auto md:h-[78svh] md:min-h-[27.5rem]">
         <div data-img className="absolute inset-0">
           <div className="cover-box" style={{ "--ar": meta.w / meta.h } as React.CSSProperties}>
             <Picture name={IMAGE} alt="Cristaleira iluminada, escada vazada e muxarabi da Casa Muxarabi" sizes="100vw" />
@@ -75,7 +75,7 @@ export function Featured() {
             <p className="label text-bronze">
               {String(open + 1).padStart(2, "0")} · {SPOTS[open].title}
             </p>
-            <p className="mt-2 text-[15px] text-white/75">{SPOTS[open].text}</p>
+            <p className="mt-2 text-[0.9375rem] text-white/75">{SPOTS[open].text}</p>
           </div>
         )}
       </div>
