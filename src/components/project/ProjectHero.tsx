@@ -22,7 +22,7 @@ export function ProjectHero({ p }: { p: Project }) {
   }, []);
   const words = p.name.split(" ");
   return (
-    <section ref={root} data-hero-overlay data-ambient="dark" className="relative h-[100svh] min-h-[600px] overflow-hidden bg-carvao text-marfim">
+    <section ref={root} data-hero-overlay data-ambient="dark" className="relative h-[100svh] min-h-[37.5rem] overflow-hidden bg-carvao text-marfim">
       <div data-par className="absolute inset-0">
         <div data-img className="h-full w-full">
           <Picture name={p.cover} alt={`${p.name}: ${p.tagline}`} priority sizes="100vw" className="h-full w-full object-cover" />

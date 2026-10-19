@@ -95,7 +95,7 @@ export function Header() {
               className="label group flex items-center gap-3"
             >
               <span>Menu</span>
-              <span aria-hidden className="relative block h-[9px] w-[26px]">
+              <span aria-hidden className="relative block h-[0.5625rem] w-[1.625rem]">
                 <span className="absolute left-0 top-0 h-px w-full bg-current transition-transform duration-500 group-hover:translate-x-1" />
                 <span className="absolute bottom-0 left-0 h-px w-[70%] bg-current transition-[width] duration-500 group-hover:w-full" />
               </span>

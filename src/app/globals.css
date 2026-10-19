@@ -28,9 +28,9 @@
   --fg-muted: #5f5d57;
   --line: rgb(23 24 22 / 0.14);
   --line-strong: rgb(23 24 22 / 0.32);
-  --gutter: clamp(20px, 3.4vw, 56px);
-  --section: clamp(84px, 10vw, 160px);
-  --header-h: 84px;
+  --gutter: clamp(1.25rem, 3.4vw, 3.5rem);
+  --section: clamp(5.25rem, 10vw, 10rem);
+  --header-h: 5.25rem;
 }
 
 /* Ambientes: o corpo muda de cor conforme a seção que domina a tela (ver BgController). */
@@ -61,7 +61,11 @@ body[data-ambient="stone"] {
   will-change: opacity;
 }
 
+/* Telas maiores que 1920px (2K, 4K): a medida-base cresce com a largura, então tipografia,
+   espaçamentos e componentes (todos em rem) mantêm a proporção vista em 1920px.
+   Até 1920px o resultado é 100% (16px) e nada muda. */
 html {
+  font-size: max(100%, 100vw / 120);
   -webkit-text-size-adjust: 100%;
   scroll-behavior: auto;
 }
@@ -78,7 +82,7 @@ body {
   color: var(--fg);
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.65;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
@@ -93,7 +97,7 @@ body {
 @layer base {
   :focus-visible {
     outline: 1px solid var(--color-bronze);
-    outline-offset: 4px;
+    outline-offset: 0.25rem;
   }
 }
 
@@ -130,7 +134,7 @@ img {
 }
 .label {
   font-family: var(--font-sans);
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -162,7 +166,7 @@ img {
 .grid-12 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: clamp(16px, 2.4vw, 40px);
+  column-gap: clamp(1rem, 2.4vw, 2.5rem);
 }
 .hairline {
   height: 1px;
@@ -181,7 +185,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -3px;
+  bottom: -0.1875rem;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
@@ -200,10 +204,10 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 17px 26px 16px;
+  gap: 0.875rem;
+  padding: 1.0625rem 1.625rem 1rem;
   border: 1px solid currentColor;
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 400;
@@ -236,7 +240,7 @@ img {
   color: var(--color-marfim);
 }
 .btn:hover .btn-arrow {
-  transform: translateX(5px);
+  transform: translateX(0.3125rem);
 }
 .btn-solid {
   background: var(--color-carvao);
@@ -287,8 +291,8 @@ img {
   position: absolute;
   left: 0;
   top: -1px;
-  width: 9px;
-  height: 9px;
+  width: 0.5625rem;
+  height: 0.5625rem;
   border-left: 1px solid currentColor;
   border-top: 1px solid currentColor;
 }
@@ -311,7 +315,7 @@ img {
 /* formulário */
 .field {
   display: grid;
-  gap: 10px;
+  gap: 0.625rem;
 }
 .field input,
 .field select,
@@ -320,9 +324,9 @@ img {
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--line-strong);
-  padding: 10px 0 12px;
+  padding: 0.625rem 0 0.75rem;
   font: inherit;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: inherit;
   border-radius: 0;
   transition: border-color 0.4s var(--ease-arq);
@@ -332,9 +336,9 @@ img {
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position:
-    calc(100% - 12px) 55%,
-    calc(100% - 7px) 55%;
-  background-size: 5px 5px;
+    calc(100% - 0.75rem) 55%,
+    calc(100% - 0.4375rem) 55%;
+  background-size: 0.3125rem 0.3125rem;
   background-repeat: no-repeat;
 }
 .field select option {
@@ -342,7 +346,7 @@ img {
 }
 .field textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 7.5rem;
 }
 .field input:focus,
 .field select:focus,
@@ -390,7 +394,7 @@ img {
 /* controle deslizante do estudo solar */
 .range {
   appearance: none;
-  height: 22px;
+  height: 1.375rem;
   background: transparent;
   cursor: pointer;
 }
@@ -404,20 +408,20 @@ img {
 }
 .range::-webkit-slider-thumb {
   appearance: none;
-  width: 18px;
-  height: 18px;
-  margin-top: -9px;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: -0.5625rem;
   border-radius: 50%;
   background: var(--color-bronze-claro);
-  border: 4px solid var(--color-carvao);
+  border: 0.25rem solid var(--color-carvao);
   box-shadow: 0 0 0 1px var(--color-bronze-claro);
 }
 .range::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
   background: var(--color-bronze-claro);
-  border: 4px solid var(--color-carvao);
+  border: 0.25rem solid var(--color-carvao);
   box-shadow: 0 0 0 1px var(--color-bronze-claro);
 }
 
@@ -513,7 +517,7 @@ html[data-intro="play"] body {
     color: var(--color-marfim);
   }
   .choice:not(:disabled):hover .choice-arrow-glyph {
-    transform: translateX(4px);
+    transform: translateX(0.25rem);
   }
 }
 .choice:focus-visible {
@@ -531,12 +535,12 @@ html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
   position: relative;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 62.4375rem;
   background: rgba(245, 243, 238, 0.92);
   color: var(--color-carvao);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.25rem 1.125rem rgba(0, 0, 0, 0.25);
   transition: transform 0.5s var(--ease-arq), background-color 0.4s;
 }
 .hotspot:hover,
@@ -545,7 +549,7 @@ html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
   color: var(--color-marfim);
 }
 .hotspot-plus {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1;
   transition: transform 0.5s var(--ease-arq);
 }
@@ -555,7 +559,7 @@ html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
 .hotspot-ring {
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: 62.4375rem;
   border: 1px solid rgba(245, 243, 238, 0.9);
   animation: hotspot-pulse 2.4s var(--ease-arq) infinite;
 }
@@ -575,14 +579,14 @@ html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
 }
 .hotspot-card {
   position: absolute;
-  top: -12px;
-  width: min(260px, 70vw);
-  padding: 16px 18px 18px;
+  top: -0.75rem;
+  width: min(16.25rem, 70vw);
+  padding: 1rem 1.125rem 1.125rem;
   background: rgba(23, 24, 22, 0.88);
   color: var(--color-marfim);
   pointer-events: none;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(0.5rem);
   transition: opacity 0.4s var(--ease-arq), transform 0.5s var(--ease-arq);
 }
 .hotspot-card.is-open {
@@ -606,7 +610,7 @@ html:not([data-foco="interiores"]) [data-foco-show="interiores"] {
 }
 @media (min-width: 768px) {
   .cover-box {
-    width: max(100%, calc(max(78svh, 440px) * var(--ar)));
+    width: max(100%, calc(max(78svh, 27.5rem) * var(--ar)));
   }
 }
 @media (prefers-reduced-motion: reduce) {

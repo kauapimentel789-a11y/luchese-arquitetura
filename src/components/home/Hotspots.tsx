@@ -51,8 +51,8 @@ export function Hotspots({ spots, open, setOpen }: { spots: Spot[]; open: number
               aria-hidden={!on}
             >
               <p className="label text-bronze">{String(i + 1).padStart(2, "0")}</p>
-              <p className="display mt-2 text-[22px] leading-tight">{s.title}</p>
-              <p className="mt-2 text-[14px] text-white/75">{s.text}</p>
+              <p className="display mt-2 text-[1.375rem] leading-tight">{s.title}</p>
+              <p className="mt-2 text-[0.875rem] text-white/75">{s.text}</p>
             </div>
           </div>
         );

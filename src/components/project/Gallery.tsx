@@ -116,7 +116,7 @@ export function Gallery({ items, title }: { items: Item[]; title: string }) {
           <div className="relative flex-1" {...swipe}>
             {slides("100vw", true)}
           </div>
-          <div className="wrap flex shrink-0 justify-center gap-2 py-5 pb-[max(20px,env(safe-area-inset-bottom,0px))]">
+          <div className="wrap flex shrink-0 justify-center gap-2 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
             <button type="button" onClick={() => go(-1)} className="btn btn-light px-5 py-3" aria-label="Imagem anterior">
               <span>←</span>
             </button>

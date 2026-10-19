@@ -48,7 +48,7 @@ export function Studio() {
             <li key={v.title}>
               <p className="label muted tabular">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="display t-md mt-3">{v.title}</h3>
-              <p className="mt-3 text-[15.5px] muted">{v.text}</p>
+              <p className="mt-3 text-[0.96875rem] muted">{v.text}</p>
             </li>
           ))}
         </ul>

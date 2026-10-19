@@ -92,7 +92,7 @@ export function Services() {
         <div
           ref={float}
           aria-hidden
-          className="pointer-events-none fixed left-0 top-0 z-40 hidden h-[300px] w-[240px] lg:block"
+          className="pointer-events-none fixed left-0 top-0 z-40 hidden h-[18.75rem] w-[15rem] lg:block"
           style={{ transform: "translate(-999px,-999px)" }}
         >
           {services.map((s, i) => (

@@ -28,7 +28,7 @@ export function ReadingProgress() {
   }, []);
   return (
     <>
-      <div aria-hidden className="fixed inset-x-0 top-0 z-[55] h-[2px]">
+      <div aria-hidden className="fixed inset-x-0 top-0 z-[55] h-[0.125rem]">
         <div ref={bar} className="h-full origin-left bg-bronze" style={{ transform: "scaleX(0)" }} />
       </div>
       <div aria-hidden className="label fixed bottom-6 right-[var(--gutter)] z-40 hidden mix-blend-difference text-white md:block">

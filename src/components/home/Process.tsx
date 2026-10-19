@@ -83,13 +83,13 @@ export function Process() {
       </div>
 
       <ol data-steps className="relative">
-        <span aria-hidden className="absolute bottom-0 left-[11px] top-0 w-px bg-[var(--line-strong)] md:left-1/2" />
-        <span aria-hidden data-progress className="absolute bottom-0 left-[11px] top-0 w-px origin-top bg-carvao md:left-1/2" />
+        <span aria-hidden className="absolute bottom-0 left-[0.6875rem] top-0 w-px bg-[var(--line-strong)] md:left-1/2" />
+        <span aria-hidden data-progress className="absolute bottom-0 left-[0.6875rem] top-0 w-px origin-top bg-carvao md:left-1/2" />
         {process.map((s, i) => {
           const right = i % 2 === 1;
           return (
             <li key={s.index} data-step className="relative grid grid-cols-12 gap-x-6 pb-24 pl-10 last:pb-0 md:pl-0">
-              <span aria-hidden data-dot className="absolute left-[6px] top-6 h-[11px] w-[11px] scale-75 rounded-full border border-carvao bg-pedra md:left-[calc(50%-5px)]" />
+              <span aria-hidden data-dot className="absolute left-[0.375rem] top-6 h-[0.6875rem] w-[0.6875rem] scale-75 rounded-full border border-carvao bg-pedra md:left-[calc(50%-0.3125rem)]" />
               <div className={`col-span-12 md:col-span-5 ${right ? "md:col-start-8 md:order-2" : "md:col-start-1 md:text-right"}`}>
                 <p data-num className="display text-[clamp(5rem,13vw,12rem)] leading-[0.8] text-carvao/90 tabular">
                   {s.index}
@@ -101,7 +101,7 @@ export function Process() {
                 </div>
               </div>
               <div className={`col-span-12 mt-8 md:col-span-4 md:mt-10 ${right ? "md:col-start-2 md:order-1" : "md:col-start-8"}`}>
-                <svg viewBox="0 0 200 150" className="w-full max-w-[320px] text-carvao" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden>
+                <svg viewBox="0 0 200 150" className="w-full max-w-[20rem] text-carvao" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden>
                   {diagrams[i]}
                 </svg>
               </div>

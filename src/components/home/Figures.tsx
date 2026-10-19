@@ -22,7 +22,7 @@ export function Figures() {
               {f.value !== null ? <Counter value={f.value} prefix={f.prefix} suffix={f.suffix} /> : <span className="text-white/25">—</span>}
             </p>
             <p className="label mt-6">{f.label}</p>
-            <p className="mt-1 text-[15px] text-mineral">{f.value !== null ? f.note : "a confirmar"}</p>
+            <p className="mt-1 text-[0.9375rem] text-mineral">{f.value !== null ? f.note : "a confirmar"}</p>
           </div>
         ))}
       </FadeIn>

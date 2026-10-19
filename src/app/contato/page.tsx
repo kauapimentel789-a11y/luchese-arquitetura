@@ -22,7 +22,7 @@ export default function ContatoPage() {
           <p className="lead mt-10 max-w-[40ch]">
             Conte o que você quer para o seu projeto. Ao enviar, a conversa continua no WhatsApp do escritório.
           </p>
-          <dl className="mt-12 grid gap-6 border-t border-[var(--line)] pt-6 text-[15px]">
+          <dl className="mt-12 grid gap-6 border-t border-[var(--line)] pt-6 text-[0.9375rem]">
             <div>
               <dt className="label muted">Estúdio</dt>
               <dd className="mt-1">{site.contact.city}</dd>

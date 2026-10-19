@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <p className="label mb-4">Ficha técnica</p>
             <dl className="border-t border-[var(--line)]">
               {[["Projeto", p.name], ["Categoria", p.category], ...p.specs.map((s) => [s.label, s.value])].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-5 gap-4 border-b border-[var(--line)] py-3 text-[15px]">
+                <div key={k} className="grid grid-cols-5 gap-4 border-b border-[var(--line)] py-3 text-[0.9375rem]">
                   <dt className="label col-span-2 pt-1 muted">{k}</dt>
                   <dd className="col-span-3">{v}</dd>
                 </div>
@@ -66,7 +66,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <p className="label mb-4 mt-10">Materiais</p>
             <ul className="flex flex-wrap gap-2">
               {p.materials.map((m) => (
-                <li key={m} className="rounded-full border border-[var(--line-strong)] px-3 py-1.5 text-[13px]">
+                <li key={m} className="rounded-full border border-[var(--line-strong)] px-3 py-1.5 text-[0.8125rem]">
                   {m}
                 </li>
               ))}
@@ -80,7 +80,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <section key={k} data-ambient={c.layout === "full" ? "dark" : k % 2 ? "stone" : "light"} className={c.layout === "full" ? "text-marfim" : "section wrap"}>
           {c.layout === "full" ? (
             <div className="relative">
-              <MediaReveal className="h-[92svh] min-h-[480px] w-full" from="center" parallax={6}>
+              <MediaReveal className="h-[92svh] min-h-[30rem] w-full" from="center" parallax={6}>
                 <Picture name={c.image!} alt={c.title} sizes="100vw" />
               </MediaReveal>
               <div className="wrap absolute inset-x-0 bottom-0 bg-gradient-to-t from-carvao/85 to-transparent pb-[8vh] pt-40">
@@ -124,7 +124,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* próximo projeto */}
       <section data-ambient="dark" className="text-marfim">
         <TLink href={`/projetos/${next.slug}`} label={next.name} data-cursor="Próximo projeto" className="group relative block overflow-hidden">
-          <div className="media h-[70svh] min-h-[420px]">
+          <div className="media h-[70svh] min-h-[26.25rem]">
             <Picture name={next.cover} alt="" sizes="100vw" className="h-full w-full object-cover opacity-60 transition-[transform,opacity] duration-[1.6s] ease-[cubic-bezier(.22,.8,.2,1)] group-hover:scale-[1.04] group-hover:opacity-80" />
           </div>
           <div className="wrap absolute inset-0 flex flex-col justify-end pb-[7vh]">

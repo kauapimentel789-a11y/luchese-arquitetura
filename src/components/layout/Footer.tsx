@@ -14,8 +14,8 @@ export function Footer() {
         <div className="grid grid-cols-12 gap-y-14">
           <div className="col-span-12 lg:col-span-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset("/brand/logo-full-white.png")} alt={site.name} width={160} height={154} className="h-auto w-[132px]" />
-            <p className="mt-10 max-w-sm text-[15px] leading-relaxed text-mineral">{site.description}</p>
+            <img src={asset("/brand/logo-full-white.png")} alt={site.name} width={160} height={154} className="h-auto w-[8.25rem]" />
+            <p className="mt-10 max-w-sm text-[0.9375rem] leading-relaxed text-mineral">{site.description}</p>
           </div>
           <nav aria-label="Rodapé" className="col-span-6 lg:col-span-2">
             <p className="label mb-5 text-mineral">Navegação</p>
@@ -68,13 +68,13 @@ export function Footer() {
         </div>
 
         {/* assinatura decorativa em escala de fachada; SVG para não ser lida como texto */}
-        <svg aria-hidden focusable="false" viewBox="0 0 1000 250" className="mt-24 block h-auto w-[min(100%,1100px)] select-none">
+        <svg aria-hidden focusable="false" viewBox="0 0 1000 250" className="mt-24 block h-auto w-[min(100%,68.75rem)] select-none">
           <text x="-6" y="200" fill="rgb(245 243 238 / 0.07)" style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontSize: 268, letterSpacing: "-0.03em" }}>
             Luchese
           </text>
         </svg>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/15 pt-6 text-[13px] text-mineral md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 flex flex-col gap-4 border-t border-white/15 pt-6 text-[0.8125rem] text-mineral md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {site.legal.company ?? site.name}
             {site.legal.cnpj && <> · CNPJ {site.legal.cnpj}</>}
