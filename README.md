@@ -63,6 +63,7 @@ O site é todo estático (não há servidor), então roda em qualquer hospedagem
 
 **Cloudflare (recomendado, plano grátis permite uso comercial)**: Workers & Pages → Create → importar o repositório do GitHub.
 Na tela de Workers: build command `npm run build:static`; deploy command `npx wrangler deploy` (lê `wrangler.jsonc`, que publica a pasta `out`).
+Com `npm run build` (sem `:static`) a pasta `out` não é gerada e a publicação falha. Se os tokens da conta forem apagados, reconecte o repositório em Settings → Build para a Cloudflare gerar um token novo.
 Na tela de Pages, se usada:
 - Framework preset: *None*
 - Build command: `npm run build:static`
